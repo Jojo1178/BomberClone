@@ -1,0 +1,1109 @@
+fileFormatVersion: 2
+guid: 361f385b4fbea834abbec1c55fd80ede
+timeCreated: 1500129395
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: bomberman_sheet_0
+    21300002: bomberman_sheet_1
+    21300004: bomberman_sheet_2
+    21300006: bomberman_sheet_3
+    21300008: bomberman_sheet_4
+    21300010: bomberman_sheet_5
+    21300012: bomberman_sheet_6
+    21300014: bomberman_sheet_7
+    21300016: bomberman_sheet_8
+    21300018: bomberman_sheet_9
+    21300020: bomberman_sheet_10
+    21300022: bomberman_sheet_11
+    21300024: bomberman_sheet_12
+    21300026: bomberman_sheet_13
+    21300028: bomberman_sheet_14
+    21300030: bomberman_sheet_15
+    21300032: bomberman_sheet_16
+    21300034: bomberman_sheet_17
+    21300036: bomberman_sheet_18
+    21300038: bomberman_sheet_19
+    21300040: bomberman_sheet_20
+    21300042: bomberman_sheet_21
+    21300044: bomberman_sheet_22
+    21300046: bomberman_sheet_23
+    21300048: bomberman_sheet_24
+    21300050: bomberman_sheet_25
+    21300052: bomberman_sheet_26
+    21300054: bomberman_sheet_27
+    21300056: bomberman_sheet_28
+    21300058: bomberman_sheet_29
+    21300060: bomberman_sheet_30
+    21300062: bomberman_sheet_31
+    21300064: bomberman_sheet_32
+    21300066: bomberman_sheet_33
+    21300068: bomberman_sheet_34
+    21300070: bomberman_sheet_35
+    21300072: bomberman_sheet_36
+    21300074: bomberman_sheet_37
+    21300076: bomberman_sheet_38
+    21300078: bomberman_sheet_39
+    21300080: bomberman_sheet_40
+    21300082: bomberman_sheet_41
+    21300084: bomberman_sheet_42
+    21300086: bomberman_sheet_43
+    21300088: bomberman_sheet_44
+    21300090: bomberman_sheet_45
+    21300092: bomberman_sheet_46
+    21300094: bomberman_sheet_47
+    21300096: bomberman_sheet_48
+    21300098: bomberman_sheet_49
+    21300100: bomberman_sheet_50
+    21300102: bomberman_sheet_51
+    21300104: bomberman_sheet_52
+    21300106: bomberman_sheet_53
+    21300108: bomberman_sheet_54
+    21300110: bomberman_sheet_55
+    21300112: bomberman_sheet_56
+    21300114: bomberman_sheet_57
+    21300116: bomberman_sheet_58
+    21300118: bomberman_sheet_59
+    21300120: bomberman_sheet_60
+    21300122: bomberman_sheet_61
+    21300124: bomberman_sheet_62
+    21300126: bomberman_sheet_63
+    21300128: bomberman_sheet_64
+    21300130: bomberman_sheet_65
+    21300132: bomberman_sheet_66
+    21300134: bomberman_sheet_67
+    21300136: bomberman_sheet_68
+    21300138: bomberman_sheet_69
+    21300140: bomberman_sheet_70
+    21300142: bomberman_sheet_71
+    21300144: bomberman_sheet_72
+    21300146: bomberman_sheet_73
+    21300148: bomberman_sheet_74
+    21300150: bomberman_sheet_75
+    21300152: bomberman_sheet_76
+    21300154: bomberman_sheet_77
+    21300156: bomberman_sheet_78
+    21300158: bomberman_sheet_79
+    21300160: bomberman_sheet_80
+    21300162: bomberman_sheet_81
+    21300164: bomberman_sheet_82
+    21300166: bomberman_sheet_83
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: bomberman_sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 148
+        width: 17
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_1
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 148
+        width: 18
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_2
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 148
+        width: 17
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_3
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 148
+        width: 18
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_4
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 148
+        width: 19
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_5
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 148
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_6
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 148
+        width: 19
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_7
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 148
+        width: 17
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_8
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 148
+        width: 18
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_9
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 148
+        width: 17
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_10
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 148
+        width: 18
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_11
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 148
+        width: 19
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_12
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 148
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_13
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 148
+        width: 19
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_14
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 148
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 118
+        width: 17
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_16
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 118
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_17
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 118
+        width: 17
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_18
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 118
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_19
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 118
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_20
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 118
+        width: 19
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_21
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 119
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_22
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 118
+        width: 17
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_23
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 118
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_24
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 118
+        width: 17
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_25
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 118
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_26
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 118
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_27
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 118
+        width: 19
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_28
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 119
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_29
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 119
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 88
+        width: 17
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_31
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 88
+        width: 18
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_32
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 88
+        width: 17
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_33
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 88
+        width: 18
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_34
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 88
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_36
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 87
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_39
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 88
+        width: 17
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_40
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 88
+        width: 18
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_41
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 88
+        width: 17
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_42
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 88
+        width: 18
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_43
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 88
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_45
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 87
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_52
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 60
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_53
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 60
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_54
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 60
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_55
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 58
+        width: 29
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_56
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 58
+        width: 29
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_57
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 60
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_58
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 60
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_59
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 60
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_60
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 60
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_61
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 60
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_62
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 60
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_64
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 31
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_65
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 31
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_66
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 30
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_67
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 30
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_68
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 34
+        width: 16
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_70
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 30
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_71
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 30
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_72
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 30
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_73
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 30
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_74
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 30
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_75
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 30
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_76
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_77
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_78
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 2
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_79
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 3
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_80
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 4
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_81
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_82
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_35
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 3
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_sheet_37
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 32
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
