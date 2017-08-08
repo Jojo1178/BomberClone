@@ -51,6 +51,9 @@ public class PlayerController : MonoBehaviour {
         if (this.CanDropBombs && Input.GetKey(this.BombKey)) { //Drop bomb
             DropBomb();
         }
+        if (Input.GetKeyUp(this.BombKey)) {
+            this.CanDropBombs = true;
+        }
     }
 
     /// <summary>
@@ -58,7 +61,9 @@ public class PlayerController : MonoBehaviour {
     /// </summary>
     private void DropBomb() {
         if (bombPrefab) { //Check if bomb prefab is assigned first
-
+            GameObject bomb = Instantiate(bombPrefab);
+            bomb.transform.localPosition = this.transform.localPosition;
+            this.CanDropBombs = false;
         }
     }
 }
