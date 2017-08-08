@@ -31,6 +31,12 @@ public class PlayerController : MonoBehaviour {
         animator = playerTransform.GetComponent<Animator>();
     }
 
+    private void LateUpdate() {
+        if (Input.GetKeyUp(this.BombKey)) {
+            this.CanDropBombs = true;
+        }
+    }
+
     private void FixedUpdate() {
         Vector2 movement = Vector2.zero;
         if (Input.GetKey(this.UpKey)) { //Up movement
@@ -51,9 +57,6 @@ public class PlayerController : MonoBehaviour {
         if (this.CanDropBombs && Input.GetKey(this.BombKey)) { //Drop bomb
             DropBomb();
         }
-        if (Input.GetKeyUp(this.BombKey)) {
-            this.CanDropBombs = true;
-        }
     }
 
     /// <summary>
@@ -65,5 +68,14 @@ public class PlayerController : MonoBehaviour {
             bomb.transform.localPosition = this.transform.localPosition;
             this.CanDropBombs = false;
         }
+    }
+
+    /// <summary>
+    /// When an explosion touch the player
+    /// </summary>
+    public void TouchByExplosion() {
+        //TODO : Play Death Animation
+        Debug.Log(this.gameObject.name + " has been DELETED");
+        Destroy(this.gameObject);
     }
 }
