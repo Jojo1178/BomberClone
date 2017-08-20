@@ -5,14 +5,26 @@ using UnityEngine;
 public class UIController : MonoBehaviour {
 
 	// Use this for initialization
-	void Start () {
-		
-	}
+	void Start ()
+    {
+        SetActivePage();
+    }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 		
 	}
+
+    private GameObject ActivePanel;
+    public GameObject PanelMainMenu;
+    public GameObject PanelPauseMenu;
+
+    private void SetActivePage()
+    {
+        PanelMainMenu.SetActive(false);
+        PanelPauseMenu.SetActive(true);
+    }
 
     public void clickButtonPlay()
     {
@@ -22,5 +34,15 @@ public class UIController : MonoBehaviour {
     public void clickButtonExit()
     {
         Debug.Log("BUTTON EXIT CLICKED");
+    }
+
+    public void clickButtonResume()
+    {
+        Debug.Log("BUTTON RESUME CLICKED");
+    }
+
+    public void clickButtonOptions()
+    {
+        Debug.Log("BUTTON OPTIONS CLICKED");
     }
 }
