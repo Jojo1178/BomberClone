@@ -22,8 +22,8 @@ public class UIController : MonoBehaviour {
 
     private void SetActivePage()
     {
-        PanelMainMenu.SetActive(false);
-        PanelPauseMenu.SetActive(true);
+        //PanelMainMenu.SetActive(false);
+        //PanelPauseMenu.SetActive(true);
     }
 
     public void clickButtonPlay()
