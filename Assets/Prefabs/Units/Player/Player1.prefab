@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1195916429979880}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 5, y: 5, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -126,6 +126,14 @@ MonoBehaviour:
   CanDropBombs: 1
   CanMove: 1
   bombPrefab: {fileID: 1416224689389530, guid: c74a48827ff51b245a9853523328172a, type: 2}
+  sound_bomb_drop:
+  - {fileID: 8300000, guid: 3d2720c26c2475249ad2dbf4318bb679, type: 3}
+  - {fileID: 8300000, guid: 9a156851854557047baefa2fa0a14800, type: 3}
+  - {fileID: 8300000, guid: 9bea94f217f46184b86c3acb1106023b, type: 3}
+  - {fileID: 8300000, guid: 9fd2bfc7f276f2146b3ad4ebc01a1eba, type: 3}
+  sound_player_death:
+  - {fileID: 8300000, guid: 3854e48460dac3e4681f045ec4aba32a, type: 3}
+  - {fileID: 8300000, guid: a31f4c5039dda7c4cb9ce0b5afa38c66, type: 3}
 --- !u!212 &212351515345507512
 SpriteRenderer:
   m_ObjectHideFlags: 1

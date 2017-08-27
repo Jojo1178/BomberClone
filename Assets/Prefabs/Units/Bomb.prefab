@@ -109,6 +109,9 @@ MonoBehaviour:
   FlamePrefab: {fileID: 1560370671572618, guid: 6d97295b112eb844c964c1f43b9e9f67,
     type: 2}
   Collider: {fileID: 61156498880497854}
+  sound_bomb_explosion:
+  - {fileID: 8300000, guid: ff01647e282c2a44f9f5d0e5fcf2142b, type: 3}
+  - {fileID: 8300000, guid: b4c4b027c27779041956825953b911bc, type: 3}
 --- !u!212 &212536418998681030
 SpriteRenderer:
   m_ObjectHideFlags: 1

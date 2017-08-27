@@ -25,6 +25,10 @@ public class PlayerController : MonoBehaviour {
     private Transform playerTransform;
     private Animator animator;
 
+    /*Sounds*/
+    public AudioClip[] sound_bomb_drop;
+    public AudioClip[] sound_player_death;
+
     void Start () {
         rigidBody = GetComponent<Rigidbody2D>();
         playerTransform = base.transform;
@@ -67,6 +71,9 @@ public class PlayerController : MonoBehaviour {
             GameObject bomb = Instantiate(bombPrefab);
             bomb.transform.localPosition = this.transform.localPosition;
             this.CanDropBombs = false;
+
+            //Play drop bomb sound:
+            SoundManager.instance.RandomizeSfx(sound_bomb_drop);
         }
     }
 
@@ -75,6 +82,10 @@ public class PlayerController : MonoBehaviour {
     /// </summary>
     public void TouchByExplosion() {
         //TODO : Play Death Animation
+
+        //Play player death sound:
+        SoundManager.instance.RandomizeSfx(sound_player_death);
+
         Debug.Log(this.gameObject.name + " has been DELETED");
         Destroy(this.gameObject);
     }
