@@ -126,6 +126,8 @@ MonoBehaviour:
   CanDropBombs: 1
   CanMove: 1
   bombPrefab: {fileID: 1416224689389530, guid: c74a48827ff51b245a9853523328172a, type: 2}
+  rigidBody: {fileID: 50967164449803640}
+  animator: {fileID: 95220176588290722}
 --- !u!212 &212351515345507512
 SpriteRenderer:
   m_ObjectHideFlags: 1

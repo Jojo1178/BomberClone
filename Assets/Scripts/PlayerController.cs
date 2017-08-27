@@ -21,15 +21,8 @@ public class PlayerController : MonoBehaviour {
     /*Prefabs*/
     public GameObject bombPrefab;
 
-    private Rigidbody2D rigidBody;
-    private Transform playerTransform;
-    private Animator animator;
-
-    void Start () {
-        rigidBody = GetComponent<Rigidbody2D>();
-        playerTransform = base.transform;
-        animator = playerTransform.GetComponent<Animator>();
-    }
+    public Rigidbody2D rigidBody;
+    public Animator animator;
 
     private void LateUpdate() {
         if (Input.GetKeyUp(this.BombKey)) {
@@ -65,7 +58,8 @@ public class PlayerController : MonoBehaviour {
     private void DropBomb() {
         if (bombPrefab) { //Check if bomb prefab is assigned first
             GameObject bomb = Instantiate(bombPrefab);
-            bomb.transform.localPosition = this.transform.localPosition;
+            Vector3 position = this.transform.localPosition;
+            bomb.transform.localPosition = new Vector3(Mathf.Round(position.x),Mathf.Round(position.y),Mathf.Round(position.z)); 
             this.CanDropBombs = false;
         }
     }
