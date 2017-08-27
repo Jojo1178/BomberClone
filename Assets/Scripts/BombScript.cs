@@ -24,21 +24,39 @@ public class BombScript : MonoBehaviour {
     /// </summary>
     public void Explode() {
         StopCoroutine(TimeBomb());
-        int dir = 1;
+        //int dir = 1;
         GameObject flame = Instantiate(this.FlamePrefab);
         flame.transform.localPosition = this.transform.localPosition;
-        while (dir < this.Force) {
-            flame = Instantiate(this.FlamePrefab);
-            flame.transform.localPosition = this.transform.localPosition + Vector3.left * dir;
-            flame = Instantiate(this.FlamePrefab);
-            flame.transform.localPosition = this.transform.localPosition + Vector3.right * dir;
-            flame = Instantiate(this.FlamePrefab);
-            flame.transform.localPosition = this.transform.localPosition + Vector3.up * dir;
-            flame = Instantiate(this.FlamePrefab);
-            flame.transform.localPosition = this.transform.localPosition + Vector3.down * dir;
-            dir++;
-        }
+        FlameScript fs = flame.GetComponent<FlameScript>();
+        fs.Init(0,Vector3.zero);
+
+        CreateFlame(this.transform.localPosition , Vector3.left);
+        CreateFlame(this.transform.localPosition , Vector3.right);
+        CreateFlame(this.transform.localPosition , Vector3.up);
+        CreateFlame(this.transform.localPosition , Vector3.down);
+        
         Destroy(this.gameObject);
+    }
+
+    private void CreateFlame(Vector3 position,Vector3 direction) {
+        RaycastHit2D hit = Physics2D.Raycast(position + direction, Vector2.zero);
+
+        bool breakable = false, stop = false;
+        if (hit.collider != null) {
+            WallScript ws;
+            if (ws = hit.collider.gameObject.GetComponent<WallScript>()) {
+                stop = true;
+                breakable = ws.breakable;
+                ws.DestroyWall();
+            }
+        }
+        if (!stop || breakable) {
+            GameObject flame = Instantiate(this.FlamePrefab);
+            flame.transform.localPosition = this.transform.localPosition;
+            FlameScript fs = flame.GetComponent<FlameScript>();
+            if (!stop)
+                fs.Init(this.Force - 1, direction);
+        }
     }
 
     /// <summary>
