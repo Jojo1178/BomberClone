@@ -1,5 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Text;
 using UnityEngine;
 
 public class MapGenerator : MonoBehaviour {
@@ -7,6 +10,9 @@ public class MapGenerator : MonoBehaviour {
     public GameObject[] floors;
     public GameObject[] destructibleWalls;
     public GameObject[] indestructibleWalls;
+
+    public string mapPath;
+    public string[] mapList;
 
     private GameObject floor;
     private GameObject destructibleWall;
@@ -20,8 +26,15 @@ public class MapGenerator : MonoBehaviour {
     {
         Debug.Log("MAP GENERATOR");
 
+        //Chose the texture pack used:
         chooseBiome();
-        createMap();
+
+        //Create a simple map:
+        //createMap();
+
+        //Load a Map from a file:
+        int[,] loadedMap = Load(mapPath);
+        instanciateMap(loadedMap);
     }
 
     // Update is called once per frame
@@ -48,7 +61,7 @@ public class MapGenerator : MonoBehaviour {
         //TODO Vérifier si toutes les listes ont la meme taille.
         if (randomBiome)
         {
-            int biomeNumber = Random.Range(0, floors.GetLength(0)-1);
+            int biomeNumber = UnityEngine.Random.Range(0, floors.GetLength(0)-1);
 
             floor = floors[biomeNumber];
             destructibleWall = destructibleWalls[biomeNumber];
@@ -116,5 +129,37 @@ public class MapGenerator : MonoBehaviour {
                 }
             }
         }
+    }
+
+    private int[,] Load(string fileName)
+    {
+        //Declare a StreamReader:
+        StreamReader reader = new StreamReader(fileName);
+        string line;
+        int lineNumber = 0;
+
+        //Instanciate a map:
+        int[,] map = new int[10,10]; //TODO: Compter le nombre de lignes et colonnes du fichier
+
+        //Parse each line of the text file:
+        while ((line = reader.ReadLine()) != null)
+        {
+            int columnNumber = 0;
+
+            //For each line, take each caracter:
+            foreach (char c in line)
+            {
+                //Convert it to int and add it into our map:
+                int tileValue = (int)Char.GetNumericValue(c);
+                map[columnNumber,lineNumber] = tileValue;
+                columnNumber++;
+            }
+            lineNumber++;
+        }
+
+        //Close the StreamReader:
+        reader.Close();
+
+        return map;
     }
 }
