@@ -19,7 +19,7 @@ public class MapGenerator : MonoBehaviour {
     private GameObject indestructibleWall;
 
     private int mapSize = 10;
-    private bool randomBiome = true;
+    private bool randomBiome = false;
 
     // Use this for initialization
     void Start ()
@@ -27,7 +27,7 @@ public class MapGenerator : MonoBehaviour {
         Debug.Log("MAP GENERATOR");
 
         //Chose the texture pack used:
-        chooseBiome();
+        chooseBiome(0);
 
         //Create a simple map:
         //createMap();
@@ -56,21 +56,19 @@ public class MapGenerator : MonoBehaviour {
         instanciateMap(newMap);
     }
 
-    private void chooseBiome()
+    private void chooseBiome(int number)
     {
-        //TODO Vérifier si toutes les listes ont la meme taille.
+        int biomeNumber = number;
+        
         if (randomBiome)
         {
-            int biomeNumber = UnityEngine.Random.Range(0, floors.GetLength(0)-1);
+            biomeNumber = UnityEngine.Random.Range(0, floors.GetLength(0)-1);
+        }
 
-            floor = floors[biomeNumber];
-            destructibleWall = destructibleWalls[biomeNumber];
-            indestructibleWall = indestructibleWalls[biomeNumber];
-        }
-        else
-        {
-            //TODO
-        }
+        //TODO Vérifier si toutes les listes ont la meme taille.
+        floor = floors[biomeNumber];
+        destructibleWall = destructibleWalls[biomeNumber];
+        indestructibleWall = indestructibleWalls[biomeNumber];
     }
 
     private void createFloor(int [,] map)
