@@ -1717,7 +1717,6 @@ MonoBehaviour:
   - {fileID: 1327768319817726, guid: 1d6f724b9297cd94aa4cf96dceda493c, type: 2}
   - {fileID: 1922351162925774, guid: ebb11bccd801fc54cbc9f848ff1213f2, type: 2}
   - {fileID: 1777258519600124, guid: de20c9e9848e85847b949e3491922e59, type: 2}
-  mapPath: Assets/Maps/hellsgates.txt
   mapList:
   - Assets/Maps/basic.txt
   - Assets/Maps/destructionArena.txt
