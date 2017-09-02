@@ -54,10 +54,6 @@ public class MapGenerator : MonoBehaviour {
 
     private void createMap()
     {
-        //1 -> Floor
-        //2 -> Destructive Wall
-        //3 -> Non Destructive Wall
-
         int[,] newMap = new int[mapSize, mapSize];
 
         createFloor(newMap);
@@ -144,6 +140,9 @@ public class MapGenerator : MonoBehaviour {
     }
 
     //Use the map to add all prefabs to the game:
+    //1 -> Floor
+    //2 -> Destructive Wall
+    //3 -> Non Destructive Wall
     private void instanciateMap(int[,] map)
     {
         for (int x = 0; x < map.GetLength(0); x++)

@@ -1721,6 +1721,9 @@ MonoBehaviour:
   - Assets/Maps/basic.txt
   - Assets/Maps/destructionArena.txt
   - Assets/Maps/hellsgates.txt
+  - Assets/Maps/arrows.txt
+  - Assets/Maps/hitmarker.txt
+  - Assets/Maps/arrows_bis.txt
 --- !u!4 &1504257091
 Transform:
   m_ObjectHideFlags: 0
@@ -1850,11 +1853,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4390740156809836, guid: 03d7c0489bcc5eb4f9462a4eefc64235, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4390740156809836, guid: 03d7c0489bcc5eb4f9462a4eefc64235, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4390740156809836, guid: 03d7c0489bcc5eb4f9462a4eefc64235, type: 2}
       propertyPath: m_LocalPosition.z
