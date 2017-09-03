@@ -19,11 +19,11 @@ public class MapGenerator : MonoBehaviour {
     private GameObject floor;
     private GameObject destructibleWall;
     private GameObject indestructibleWall;
-
-    private int mapSize = 10;
-
+    
     private bool randomBiome = true;
     private bool randomMap = true;
+
+    private int mapSize = 10;
 
     // Use this for initialization
     void Start ()
@@ -113,9 +113,9 @@ public class MapGenerator : MonoBehaviour {
         StreamReader reader = new StreamReader(fileName);
         string line;
         int lineNumber = 0;
-
+        
         //Instanciate a map:
-        int[,] map = new int[10,10]; //TODO: Compter le nombre de lignes et colonnes du fichier
+        int[,] map = new int[mapSize, mapSize];
 
         //Parse each line of the text file:
         while ((line = reader.ReadLine()) != null)
