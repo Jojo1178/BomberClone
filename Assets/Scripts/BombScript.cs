@@ -13,6 +13,9 @@ public class BombScript : MonoBehaviour {
 
     private bool creatorLeft;
 
+    /*Sounds*/
+    public AudioClip[] sound_bomb_explosion;
+
     private void OnEnable() {
         this.Collider.enabled = false;
         this.creatorLeft = false;
@@ -23,6 +26,10 @@ public class BombScript : MonoBehaviour {
     /// When a bomb explode
     /// </summary>
     public void Explode() {
+        
+        //Play bomb explosion sound:
+        SoundManager.instance.RandomizeSfx(sound_bomb_explosion);
+
         StopCoroutine(TimeBomb());
         //int dir = 1;
         GameObject flame = Instantiate(this.FlamePrefab);
@@ -35,6 +42,7 @@ public class BombScript : MonoBehaviour {
         CreateFlame(this.transform.localPosition , Vector3.up);
         CreateFlame(this.transform.localPosition , Vector3.down);
         
+
         Destroy(this.gameObject);
     }
 
