@@ -12,9 +12,6 @@ public class MapGenerator : MonoBehaviour {
     public GameObject[] destructibleWalls;
     public GameObject[] indestructibleWalls;
 
-    //List of all maps:
-    public string[] mapList;
-
     //Prefabs used to create the map:
     private GameObject floor;
     private GameObject destructibleWall;
@@ -31,10 +28,10 @@ public class MapGenerator : MonoBehaviour {
         Debug.Log("MAP GENERATOR");
 
         //Chose the texture pack:
-        chooseBiome(0);
+        //chooseBiome(0);
 
         //Choose the map:
-        chooseMap(0);
+        //chooseMap(0);
 
         //Load the choosen Map:
         //int[,] loadedMap = Load(mapPath);
@@ -52,15 +49,13 @@ public class MapGenerator : MonoBehaviour {
         
     }
 
-    private void createMap()
+    public void launchLevel(string mapFilePath, int biomeNumber, bool randomBiome)
     {
-        int[,] newMap = new int[mapSize, mapSize];
-
-        createFloor(newMap);
-        createBorders(newMap);
-        instanciateMap(newMap);
+        this.randomBiome = randomBiome;
+        chooseBiome(biomeNumber);
+        createMap(mapFilePath);
     }
-
+    
     private void chooseBiome(int number)
     {
         //If we want a specific texture pack:
@@ -84,26 +79,10 @@ public class MapGenerator : MonoBehaviour {
         indestructibleWall = indestructibleWalls[biomeNumber];
     }
 
-    private void chooseMap(int number)
+    private void createMap(string mapFilePath)
     {
-        //If we want a specific map:
-        int mapNumber = number;
-
-        //If we want a random texture pack:
-        if (randomMap)
-        {
-            mapNumber = UnityEngine.Random.Range(0, mapList.GetLength(0));
-        }
-
-        //If the mapNumber does not exists, use the basic one:
-        if (mapNumber >= mapList.Length)
-        {
-            mapNumber = 0;
-        }
-        //TODO check null value and redirect to CreateMap if null ? 
-
-        //We load the choosen map from its text file:
-        int[,] loadedMap = Load(mapList[mapNumber]);
+        //We load the choosen map from its text file and instanciate it:
+        int[,] loadedMap = Load(mapFilePath);
         instanciateMap(loadedMap);
     }
 
@@ -165,6 +144,15 @@ public class MapGenerator : MonoBehaviour {
                 }
             }
         }
+    }
+
+    private void createMap()
+    {
+        int[,] newMap = new int[mapSize, mapSize];
+
+        createFloor(newMap);
+        createBorders(newMap);
+        instanciateMap(newMap);
     }
 
     private void createFloor(int[,] map)

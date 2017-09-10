@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class UIController : MonoBehaviour {
 
-	// Use this for initialization
-	void Start ()
+    private GameObject ActivePanel;
+    public GameObject PanelMainMenu;
+    public GameObject PanelPauseMenu;
+    public GameObject PanelChooseLevelMenu;
+
+    // Use this for initialization
+    void Start ()
     {
-        SetActivePage();
+        //The first panel to display is the MainMenu:
+        ActivePanel = PanelMainMenu;
+        SetActivePage(PanelMainMenu);
     }
 	
 	// Update is called once per frame
@@ -16,33 +23,33 @@ public class UIController : MonoBehaviour {
 		
 	}
 
-    private GameObject ActivePanel;
-    public GameObject PanelMainMenu;
-    public GameObject PanelPauseMenu;
-
-    private void SetActivePage()
+    private void SetActivePage(GameObject panelToActivate)
     {
-        //PanelMainMenu.SetActive(false);
-        //PanelPauseMenu.SetActive(true);
+        //Set the current panel to false:
+        ActivePanel.SetActive(false);
+
+        //Set the panel to display at true:
+        ActivePanel = panelToActivate;
+        if (panelToActivate != null)
+        {
+            panelToActivate.SetActive(true);
+        }
     }
 
+    // MAIN MENU:
     public void clickButtonPlay()
     {
-        Debug.Log("BUTTON PLAY CLICKED");
+        SetActivePage(PanelChooseLevelMenu);
     }
 
     public void clickButtonExit()
     {
-        Debug.Log("BUTTON EXIT CLICKED");
+        
     }
 
-    public void clickButtonResume()
+    // CHOOSE LEVEL MENU:
+    public void clickButtonPlayLaunch()
     {
-        Debug.Log("BUTTON RESUME CLICKED");
-    }
-
-    public void clickButtonOptions()
-    {
-        Debug.Log("BUTTON OPTIONS CLICKED");
+        SetActivePage(null);
     }
 }

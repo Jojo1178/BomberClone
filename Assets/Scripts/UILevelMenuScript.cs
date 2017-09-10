@@ -6,12 +6,14 @@ using UnityEngine.UI;
 
 public class UILevelMenuScript : MonoBehaviour {
 
+    public GameObject mapManager;
+
     public Text mapNameUI;
+    public Image mapPreviewUI;
     public Toggle mapToggleUI;
     public Toggle textureToggleUI;
 
     private Dictionary<int, string> mapNameDictionary = new Dictionary<int, string>();
-    private Dictionary<int, string> mapPreviewDictionary = new Dictionary<int, string>();
 
     private int numberOfMapsDetected = 0;
     private int selectedMap = 0;
@@ -28,7 +30,6 @@ public class UILevelMenuScript : MonoBehaviour {
 	void Update ()
     {
         updateMaps();
-        updateRandom();
     }
 
     private void loadMaps()
@@ -47,24 +48,61 @@ public class UILevelMenuScript : MonoBehaviour {
                 mapNameDictionary.Add(numberOfMapsDetected, file.Name);
                 numberOfMapsDetected++;
             }
-            //else if (file.Extension == ".jpg" || file.Extension == ".png")
-            //{
-            //   mapPreviewDictionary.Add(mapCounter, file.Name);
-            //}
         }
     }
 
     private void updateMaps()
     {
-        //On affiche le nom de la map selectionnée dans l'UI:
-        mapNameUI.text = mapNameDictionary[selectedMap];
+        //On enlève l'extention .txt au nom du fichier:
+        string mapNameWithoutExt = mapNameDictionary[selectedMap].Substring(0, mapNameDictionary[selectedMap].Length - 4);
 
-        //On affiche la preview de la map selectionée dans l'UI:
+        //On affiche le nom de la map selectionnée dans l'UI:
+        mapNameUI.text = mapNameWithoutExt;
+
+        //On vérifie si cette carte a une preview:
+        if (File.Exists("Assets/Maps/" + mapNameWithoutExt + ".jpg"))
+        {
+            //Si cette carte a une preview, on l'affiche dans l'UI (JPG):
+            Sprite NewSprite = new Sprite();
+            Texture2D SpriteTexture = LoadTexture("Assets/Maps/" + mapNameWithoutExt + ".jpg");
+            NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0), 100.0f);
+            mapPreviewUI.sprite = NewSprite;
+        }
+        else if (File.Exists("Assets/Maps/" + mapNameWithoutExt + ".png"))
+        {
+            //Si cette carte a une preview, on l'affiche dans l'UI (PNG):
+            Sprite NewSprite = new Sprite();
+            Texture2D SpriteTexture = LoadTexture("Assets/Maps/" + mapNameWithoutExt + ".jpg");
+            NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0), 100.0f);
+            mapPreviewUI.sprite = NewSprite;
+        }
+        else
+        {
+            //Si cette carte n'a pas de preview, on l'affiche la 404.jpg:
+            Sprite NewSprite = new Sprite();
+            Texture2D SpriteTexture = LoadTexture("Assets/Maps/404.jpg");
+            NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0), 100.0f);
+            mapPreviewUI.sprite = NewSprite;
+        }
     }
 
-    private void updateRandom()
+    public Texture2D LoadTexture(string FilePath)
     {
-        
+
+        // Load a PNG or JPG file from disk to a Texture2D
+        // Returns null if load fails
+
+        Texture2D Tex2D;
+        byte[] FileData;
+
+        if (File.Exists(FilePath))
+        {
+            FileData = File.ReadAllBytes(FilePath);
+            Tex2D = new Texture2D(2, 2);           // Create new "empty" texture
+            if (Tex2D.LoadImage(FileData))           // Load the imagedata into the texture (size is set automatically)
+                return Tex2D;                 // If data = readable -> return texture
+        }
+        return null;                     // Return null if load failed
     }
 
     public void clickButtonGoRight()
@@ -109,5 +147,28 @@ public class UILevelMenuScript : MonoBehaviour {
         Debug.Log("RANDOM MAP: "+useRandomMap);
         //TEXTURE ALEATOIRE:
         Debug.Log("RANDOM TEXTURE: "+useRandomTexture);
+
+        string choosenMapFilePath = chooseMap();
+
+        //Launch the game with selected informations:
+        MapGenerator mapGenerator = mapManager.GetComponent<MapGenerator>();
+        mapGenerator.launchLevel(choosenMapFilePath, 0, useRandomTexture);
+    }
+
+    private string chooseMap()
+    {
+        //If we want the selected map:
+        int mapNumber = selectedMap;
+
+        //If we want a random map:
+        if (useRandomMap)
+        {
+            mapNumber = UnityEngine.Random.Range(0, mapNameDictionary.Count);
+        }
+        
+        //We add the path to the Maps directory to the map name:
+        string choosenMapFilePath = "Assets/Maps/" + mapNameDictionary[mapNumber];
+
+        return choosenMapFilePath;
     }
 }
