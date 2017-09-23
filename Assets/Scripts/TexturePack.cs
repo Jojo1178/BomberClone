@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TexturePack : MonoBehaviour
+public class TexturePack
 {
     private string textureName;
     private GameObject floorPrefab;

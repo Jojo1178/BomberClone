@@ -122,6 +122,7 @@ public class MapGenerator : MonoBehaviour
         }
     }
 
+    [Obsolete]
     private void createMap()
     {
         int[,] newMap = new int[mapSize, mapSize];
@@ -131,6 +132,7 @@ public class MapGenerator : MonoBehaviour
         instanciateMap(newMap);
     }
 
+    [Obsolete]
     private void createFloor(int[,] map)
     {
         for (int x = 0; x < mapSize; x++)
@@ -142,6 +144,7 @@ public class MapGenerator : MonoBehaviour
         }
     }
 
+    [Obsolete]
     private void createBorders(int[,] map)
     {
         for (int x = 0; x < mapSize; x++) //BAS
