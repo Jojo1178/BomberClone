@@ -7,16 +7,28 @@ using UnityEngine.UI;
 public class UILevelMenuScript : MonoBehaviour {
 
     public GameObject mapManager;
-
+    
+    //Composants de l'UI à mettre à jour:
     public Text mapNameUI;
+    public Text textureNameUI;
     public Image mapPreviewUI;
+    public Image texturePreviewUI;
     public Toggle mapToggleUI;
     public Toggle textureToggleUI;
 
+    //Dictionaires de textures et cartes:
     private Dictionary<int, string> mapNameDictionary = new Dictionary<int, string>();
+    private Dictionary<int, TexturePack> textureDictionary = new Dictionary<int, TexturePack>();
+
+    //Entrée des prefabs:
+    public GameObject[] floors;
+    public GameObject[] destructibleWalls;
+    public GameObject[] indestructibleWalls;
 
     private int numberOfMapsDetected = 0;
+    private int numberOfTexturesDetected = 0;
     private int selectedMap = 0;
+    private int selectedTexture = 0;
     private bool useRandomMap = false;
     private bool useRandomTexture = false;
 
@@ -24,12 +36,14 @@ public class UILevelMenuScript : MonoBehaviour {
     void Start ()
     {
         loadMaps();
+        loadTextures();
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
         updateMaps();
+        updateTextures();
     }
 
     private void loadMaps()
@@ -48,6 +62,16 @@ public class UILevelMenuScript : MonoBehaviour {
                 mapNameDictionary.Add(numberOfMapsDetected, file.Name);
                 numberOfMapsDetected++;
             }
+        }
+    }
+
+    private void loadTextures()
+    {
+        for (int i = 0; i < floors.Length; i++)
+        {
+            TexturePack texturePack = new TexturePack("PackTexture"+i, floors[i], destructibleWalls[i], indestructibleWalls[i]);
+            textureDictionary.Add(i, texturePack);
+            numberOfTexturesDetected++;
         }
     }
 
@@ -86,73 +110,26 @@ public class UILevelMenuScript : MonoBehaviour {
         }
     }
 
-    public Texture2D LoadTexture(string FilePath)
+    private void updateTextures()
     {
+        //On récupère le texture pack selectionné:
+        TexturePack selectedTexturePack = textureDictionary[selectedTexture];
 
-        // Load a PNG or JPG file from disk to a Texture2D
-        // Returns null if load fails
-
-        Texture2D Tex2D;
-        byte[] FileData;
-
-        if (File.Exists(FilePath))
-        {
-            FileData = File.ReadAllBytes(FilePath);
-            Tex2D = new Texture2D(2, 2);           // Create new "empty" texture
-            if (Tex2D.LoadImage(FileData))           // Load the imagedata into the texture (size is set automatically)
-                return Tex2D;                 // If data = readable -> return texture
-        }
-        return null;                     // Return null if load failed
-    }
-
-    public void clickButtonGoRight()
-    {
-        if (selectedMap < numberOfMapsDetected-1)
-        {
-            selectedMap++;
-        }
-        else
-        {
-            selectedMap = 0;
-        }
-    }
-
-    public void clickButtonGoLeft()
-    {
-        if (selectedMap > 0)
-        {
-            selectedMap--;
-        }
-        else
-        {
-            selectedMap = numberOfMapsDetected-1;
-        }
-    }
-
-    public void toggleRandomMap(bool value)
-    {
-        useRandomMap = mapToggleUI.isOn;
-    }
-
-    public void toggleRandomTexture(bool value)
-    {
-        useRandomTexture = textureToggleUI.isOn;
+        //On affiche le nom du pack texture selectionné dans l'UI:
+        textureNameUI.text = selectedTexturePack.getTextureName();
     }
 
     public void clickButtonPlay()
     {
-        //MAP CHOISIE:
-        Debug.Log("MAP SELECTED: "+ mapNameDictionary[selectedMap]);
-        //MAP ALEATOIRE:
-        Debug.Log("RANDOM MAP: "+useRandomMap);
-        //TEXTURE ALEATOIRE:
-        Debug.Log("RANDOM TEXTURE: "+useRandomTexture);
-
+        //On récupère la Map choisie à envoyer au MapGenerator:
         string choosenMapFilePath = chooseMap();
 
-        //Launch the game with selected informations:
+        //On récupère le TexturePack choisi à envoyer au MapGenerator:
+        TexturePack choosenTexturePack = chooseTexture();
+
+        //On envoie les informations au MapGenerator:
         MapGenerator mapGenerator = mapManager.GetComponent<MapGenerator>();
-        mapGenerator.launchLevel(choosenMapFilePath, 0, useRandomTexture);
+        mapGenerator.launchLevel(choosenMapFilePath, choosenTexturePack);
     }
 
     private string chooseMap()
@@ -170,5 +147,96 @@ public class UILevelMenuScript : MonoBehaviour {
         string choosenMapFilePath = "Assets/Maps/" + mapNameDictionary[mapNumber];
 
         return choosenMapFilePath;
+    }
+
+    private TexturePack chooseTexture()
+    {
+        //If we want the selected map:
+        int textureNumber = selectedTexture;
+
+        //If we want a random map:
+        if (useRandomTexture)
+        {
+            textureNumber = UnityEngine.Random.Range(0, textureDictionary.Count);
+        }
+        
+        return textureDictionary[textureNumber];
+    }
+
+    public void clickButtonGoRightMap()
+    {
+        if (selectedMap < numberOfMapsDetected - 1)
+        {
+            selectedMap++;
+        }
+        else
+        {
+            selectedMap = 0;
+        }
+    }
+
+    public void clickButtonGoLeftMap()
+    {
+        if (selectedMap > 0)
+        {
+            selectedMap--;
+        }
+        else
+        {
+            selectedMap = numberOfMapsDetected - 1;
+        }
+    }
+
+    public void clickButtonGoRightTexture()
+    {
+        if (selectedTexture < numberOfTexturesDetected - 1)
+        {
+            selectedTexture++;
+        }
+        else
+        {
+            selectedTexture = 0;
+        }
+    }
+
+    public void clickButtonGoLeftTexture()
+    {
+        if (selectedTexture > 0)
+        {
+            selectedTexture--;
+        }
+        else
+        {
+            selectedTexture = numberOfTexturesDetected - 1;
+        }
+    }
+
+    public void toggleRandomMap(bool value)
+    {
+        useRandomMap = mapToggleUI.isOn;
+    }
+
+    public void toggleRandomTexture(bool value)
+    {
+        useRandomTexture = textureToggleUI.isOn;
+    }
+
+    public Texture2D LoadTexture(string FilePath)
+    {
+
+        // Load a PNG or JPG file from disk to a Texture2D
+        // Returns null if load fails
+
+        Texture2D Tex2D;
+        byte[] FileData;
+
+        if (File.Exists(FilePath))
+        {
+            FileData = File.ReadAllBytes(FilePath);
+            Tex2D = new Texture2D(2, 2);           // Create new "empty" texture
+            if (Tex2D.LoadImage(FileData))           // Load the imagedata into the texture (size is set automatically)
+                return Tex2D;                 // If data = readable -> return texture
+        }
+        return null;                     // Return null if load failed
     }
 }

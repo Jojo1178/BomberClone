@@ -5,21 +5,13 @@ using System.IO;
 using System.Text;
 using UnityEngine;
 
-public class MapGenerator : MonoBehaviour {
-
-    //List of all textures of each type:
-    public GameObject[] floors;
-    public GameObject[] destructibleWalls;
-    public GameObject[] indestructibleWalls;
-
+public class MapGenerator : MonoBehaviour
+{
     //Prefabs used to create the map:
     private GameObject floor;
     private GameObject destructibleWall;
     private GameObject indestructibleWall;
     
-    private bool randomBiome = true;
-    private bool randomMap = true;
-
     private int mapSize = 10;
 
     // Use this for initialization
@@ -48,37 +40,21 @@ public class MapGenerator : MonoBehaviour {
     {
         
     }
-
-    public void launchLevel(string mapFilePath, int biomeNumber, bool randomBiome)
+    
+    public void launchLevel(string mapFilePath, TexturePack texturePack)
     {
-        this.randomBiome = randomBiome;
-        chooseBiome(biomeNumber);
+        instanciateTextures(texturePack);
         createMap(mapFilePath);
     }
-    
-    private void chooseBiome(int number)
+
+    private void instanciateTextures(TexturePack texture)
     {
-        //If we want a specific texture pack:
-        int biomeNumber = number;
-        
-        //If we want a random texture pack:
-        if (randomBiome)
-        {
-            biomeNumber = UnityEngine.Random.Range(0, floors.GetLength(0));
-        }
-
-        //If one of the biomeNumber does not exists, use the basic one:
-        if (biomeNumber >= floors.Length || biomeNumber >= destructibleWalls.Length || biomeNumber >= indestructibleWalls.Length)
-        {
-            biomeNumber = 0;
-        }
-
         //Instanciate all textures from the choosen texture pack:
-        floor = floors[biomeNumber];
-        destructibleWall = destructibleWalls[biomeNumber];
-        indestructibleWall = indestructibleWalls[biomeNumber];
+        floor = texture.getFloorPrefab();
+        destructibleWall = texture.getDestructibleWallPrefab();
+        indestructibleWall = texture.getIndestructibleWallPrefab();
     }
-
+    
     private void createMap(string mapFilePath)
     {
         //We load the choosen map from its text file and instanciate it:
