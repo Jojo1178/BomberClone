@@ -12,7 +12,9 @@ public class UILevelMenuScript : MonoBehaviour {
     public Text mapNameUI;
     public Text textureNameUI;
     public Image mapPreviewUI;
-    public Image texturePreviewUI;
+    public Image textureFloorPreviewUI;
+    public Image textureDestructibleWallPreviewUI;
+    public Image textureIndestructibleWallPreviewUI;
     public Toggle mapToggleUI;
     public Toggle textureToggleUI;
 
@@ -117,6 +119,23 @@ public class UILevelMenuScript : MonoBehaviour {
 
         //On affiche le nom du pack texture selectionné dans l'UI:
         textureNameUI.text = selectedTexturePack.getTextureName();
+
+        //On récupère la preview des prefabs du texture pack sélectionné:
+        Texture2D floorPreview = UnityEditor.AssetPreview.GetAssetPreview(selectedTexturePack.getFloorPrefab());
+        Texture2D destructibleWallPreview = UnityEditor.AssetPreview.GetAssetPreview(selectedTexturePack.getDestructibleWallPrefab());
+        Texture2D indestructibleWallPreview = UnityEditor.AssetPreview.GetAssetPreview(selectedTexturePack.getIndestructibleWallPrefab());
+
+        //On affiche la preview des prefabs du texture pack selectionné:
+        Sprite NewSprite = new Sprite();
+
+        NewSprite = Sprite.Create(floorPreview, new Rect(0, 0, floorPreview.width, floorPreview.height), new Vector2(0, 0), 100.0f);
+        textureFloorPreviewUI.sprite = NewSprite;
+
+        NewSprite = Sprite.Create(destructibleWallPreview, new Rect(0, 0, destructibleWallPreview.width, destructibleWallPreview.height), new Vector2(0, 0), 100.0f);
+        textureDestructibleWallPreviewUI.sprite = NewSprite;
+
+        NewSprite = Sprite.Create(indestructibleWallPreview, new Rect(0, 0, indestructibleWallPreview.width, indestructibleWallPreview.height), new Vector2(0, 0), 100.0f);
+        textureIndestructibleWallPreviewUI.sprite = NewSprite;
     }
 
     public void clickButtonPlay()
