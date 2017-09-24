@@ -96,7 +96,7 @@ public class UILevelMenuScript : MonoBehaviour {
         {
             //Si cette carte a une preview, on l'affiche dans l'UI (PNG):
             Sprite NewSprite = new Sprite();
-            Texture2D SpriteTexture = LoadTexture("Assets/Maps/" + mapNameWithoutExt + ".jpg");
+            Texture2D SpriteTexture = LoadTexture("Assets/Maps/" + mapNameWithoutExt + ".png");
             NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0), 100.0f);
             mapPreviewUI.sprite = NewSprite;
         }
