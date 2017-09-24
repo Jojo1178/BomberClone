@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour {
         if (bombPrefab) { //Check if bomb prefab is assigned first
             GameObject bomb = Instantiate(bombPrefab);
             Vector3 position = this.transform.localPosition;
-            bomb.transform.localPosition = new Vector3(Mathf.Round(position.x),Mathf.Round(position.y),Mathf.Round(position.z)); 
+            bomb.transform.localPosition = new Vector3(Mathf.Round(position.x), Mathf.Round(position.y), Mathf.Round(position.z));
             this.CanDropBombs = false;
 
             //Play drop bomb sound:
