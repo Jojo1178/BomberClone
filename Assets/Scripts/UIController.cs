@@ -52,4 +52,9 @@ public class UIController : MonoBehaviour {
     {
         SetActivePage(null);
     }
+
+    public void clickButtonBack()
+    {
+        SetActivePage(PanelMainMenu);
+    }
 }
