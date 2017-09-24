@@ -7,6 +7,9 @@ using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
 {
+    //Players prefabs:
+    public GameObject playerA;
+
     //Prefabs used to create the map:
     private GameObject floor;
     private GameObject destructibleWall;
@@ -43,8 +46,16 @@ public class MapGenerator : MonoBehaviour
     
     public void launchLevel(string mapFilePath, TexturePack texturePack)
     {
+        //Instancie les textures à utiliser:
         instanciateTextures(texturePack);
+
+        //Crée la carte:
         createMap(mapFilePath);
+    }
+
+    private void placePlayers()
+    {
+
     }
 
     private void instanciateTextures(TexturePack texture)
@@ -98,6 +109,7 @@ public class MapGenerator : MonoBehaviour
     //1 -> Floor
     //2 -> Destructive Wall
     //3 -> Non Destructive Wall
+    //4 -> Spawn player A
     private void instanciateMap(int[,] map)
     {
         for (int x = 0; x < map.GetLength(0); x++)
@@ -112,10 +124,17 @@ public class MapGenerator : MonoBehaviour
                         Instantiate(floor, new Vector3(x, y, 0), Quaternion.identity);
                         break;
                     case 2:
+                        //For destructible positions, we instanciate a Floor tile + Destrucible prefab:
+                        Instantiate(floor, new Vector3(x, y, 0), Quaternion.identity);
                         Instantiate(destructibleWall, new Vector3(x, y, 0), Quaternion.identity);
                         break;
                     case 3:
                         Instantiate(indestructibleWall, new Vector3(x, y, 0), Quaternion.identity);
+                        break;
+                    case 4:
+                        //For players positions, we instanciate a Floor tile + Player prefab
+                        Instantiate(floor, new Vector3(x, y, 0), Quaternion.identity);
+                        Instantiate(playerA, new Vector3(x, y, 0), Quaternion.identity);
                         break;
                 }
             }
