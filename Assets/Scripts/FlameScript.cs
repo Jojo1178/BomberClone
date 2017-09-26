@@ -8,6 +8,7 @@ public class FlameScript : MonoBehaviour {
     public float Timer = 1f;
 
     private List<GameObject> collided = new List<GameObject>();
+    private GameObject lightGameObject;
 
     private void OnEnable() {
         StartCoroutine(TimeFlame());
@@ -16,6 +17,7 @@ public class FlameScript : MonoBehaviour {
     private IEnumerator TimeFlame() {
         yield return new WaitForSeconds(this.Timer);
         Destroy(this.gameObject);
+        Destroy(this.lightGameObject);
     }
 
     /// <summary>
@@ -58,6 +60,19 @@ public class FlameScript : MonoBehaviour {
                     fs.Init(0, direction);
             }
 
+            //Create a Light
+            lightGameObject  = new GameObject("Flame Light");
+
+            //Set Light properties:
+            Light lightComp = lightGameObject.AddComponent<Light>();
+            lightComp.color = Color.white;
+            lightComp.range = 3;
+            lightComp.intensity = 7;
+            
+            //Set the position of the light:
+            Vector3 lightPosition = this.transform.localPosition;
+            lightPosition.z = -1;
+            lightGameObject.transform.position = lightPosition;
         }
     }
 }

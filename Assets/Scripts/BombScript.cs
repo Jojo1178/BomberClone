@@ -41,7 +41,6 @@ public class BombScript : MonoBehaviour {
         CreateFlame(this.transform.localPosition , Vector3.right);
         CreateFlame(this.transform.localPosition , Vector3.up);
         CreateFlame(this.transform.localPosition , Vector3.down);
-        
 
         Destroy(this.gameObject);
     }
