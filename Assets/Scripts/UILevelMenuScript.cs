@@ -124,7 +124,7 @@ public class UILevelMenuScript : MonoBehaviour {
         Texture2D floorPreview = UnityEditor.AssetPreview.GetAssetPreview(selectedTexturePack.getFloorPrefab());
         Texture2D destructibleWallPreview = UnityEditor.AssetPreview.GetAssetPreview(selectedTexturePack.getDestructibleWallPrefab());
         Texture2D indestructibleWallPreview = UnityEditor.AssetPreview.GetAssetPreview(selectedTexturePack.getIndestructibleWallPrefab());
-
+        
         //On affiche la preview des prefabs du texture pack selectionné:
         Sprite NewSprite = new Sprite();
 

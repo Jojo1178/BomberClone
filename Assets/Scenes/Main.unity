@@ -4509,7 +4509,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1989660916
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4573,7 +4573,7 @@ MonoBehaviour:
   destructibleWalls:
   - {fileID: 1643323578782284, guid: 436d5df550bc2e24487327d214902a76, type: 2}
   - {fileID: 1718712694045386, guid: 93e373df115f3514fbddb05fda743ff8, type: 2}
-  - {fileID: 1424984009479260, guid: 2169adc2611133c4dbe7ca9951848f59, type: 2}
+  - {fileID: 1098620868269414, guid: 79da3850f184f7645a86847a3821a221, type: 2}
   - {fileID: 1647673701734910, guid: 34dbce94bc5380b4d92c048cebae6e81, type: 2}
   - {fileID: 1214336896716728, guid: 30ffb30db80b51c44949dec40a598440, type: 2}
   indestructibleWalls:
