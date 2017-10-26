@@ -8,6 +8,7 @@ public class UIController : MonoBehaviour {
     public GameObject PanelMainMenu;
     public GameObject PanelPauseMenu;
     public GameObject PanelChooseLevelMenu;
+    public GameObject PanelIngameMenu;
 
     // Use this for initialization
     void Start ()
@@ -36,6 +37,8 @@ public class UIController : MonoBehaviour {
         }
     }
 
+    // NO TREATMENTS IN THIS CLASS, ONLY GUI SWAP
+
     // MAIN MENU:
     public void clickButtonPlay()
     {
@@ -50,11 +53,23 @@ public class UIController : MonoBehaviour {
     // CHOOSE LEVEL MENU:
     public void clickButtonPlayLaunch()
     {
-        SetActivePage(null);
+        SetActivePage(PanelIngameMenu);
     }
 
     public void clickButtonBack()
     {
         SetActivePage(PanelMainMenu);
+    }
+
+    // IN GAME MENU:
+    public void clickButtonPause()
+    {
+        SetActivePage(PanelPauseMenu);
+    }
+
+    // PAUSE MENU:
+    public void clickButtonResume()
+    {
+        SetActivePage(PanelIngameMenu);
     }
 }
