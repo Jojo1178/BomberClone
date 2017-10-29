@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ApplicationController : MonoBehaviour {
 
+    public Camera camera;
+    public MapGenerator MapGenerator;
+
 	// Use this for initialization
 	void Start () {
         Debug.Log("Application Started");
@@ -11,6 +14,5 @@ public class ApplicationController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
 	}
 }

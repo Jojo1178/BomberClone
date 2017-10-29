@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212351515345507512}
   - component: {fileID: 50967164449803640}
   - component: {fileID: 61711031618723552}
+  - component: {fileID: 58513835112350664}
   - component: {fileID: 95220176588290722}
   - component: {fileID: 114999218551671168}
   m_Layer: 5
@@ -38,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1195916429979880}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5, y: 5, z: 0}
+  m_LocalPosition: {x: 1, y: 1, z: 0}
   m_LocalScale: {x: 4.5, y: 4.5, z: 4.5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -53,26 +54,41 @@ Rigidbody2D:
   m_GameObject: {fileID: 1195916429979880}
   m_BodyType: 0
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 1
-  m_Mass: 0.6885
+  m_UseFullKinematicContacts: 1
+  m_UseAutoMass: 0
+  m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0
+  m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
---- !u!61 &61711031618723552
-BoxCollider2D:
+--- !u!58 &58513835112350664
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1195916429979880}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 93432ed6beebc8a44aa54fb00d88ac86, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.09
+--- !u!61 &61711031618723552
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1195916429979880}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 93432ed6beebc8a44aa54fb00d88ac86, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -87,7 +103,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.17, y: 0.2}
+  m_Size: {x: 0.15, y: 0.18}
   m_EdgeRadius: 0
 --- !u!95 &95220176588290722
 Animator:
@@ -126,6 +142,8 @@ MonoBehaviour:
   CanDropBombs: 1
   CanMove: 1
   bombPrefab: {fileID: 1416224689389530, guid: c74a48827ff51b245a9853523328172a, type: 2}
+  rigidBody: {fileID: 50967164449803640}
+  animator: {fileID: 95220176588290722}
   sound_bomb_drop:
   - {fileID: 8300000, guid: 3d2720c26c2475249ad2dbf4318bb679, type: 3}
   - {fileID: 8300000, guid: 9a156851854557047baefa2fa0a14800, type: 3}
@@ -134,8 +152,6 @@ MonoBehaviour:
   sound_player_death:
   - {fileID: 8300000, guid: 3854e48460dac3e4681f045ec4aba32a, type: 3}
   - {fileID: 8300000, guid: a31f4c5039dda7c4cb9ce0b5afa38c66, type: 3}
-  rigidBody: {fileID: 50967164449803640}
-  animator: {fileID: 95220176588290722}
 --- !u!212 &212351515345507512
 SpriteRenderer:
   m_ObjectHideFlags: 1
