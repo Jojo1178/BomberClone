@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -39,13 +40,13 @@ public class UILevelMenuScript : MonoBehaviour {
     {
         loadMaps();
         loadTextures();
-	}
+        updateMapAndTexturePreview();
+    }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        updateMaps();
-        updateTextures();
+        
     }
 
     private void loadMaps()
@@ -116,28 +117,30 @@ public class UILevelMenuScript : MonoBehaviour {
     {
         //On récupère le texture pack selectionné:
         TexturePack selectedTexturePack = textureDictionary[selectedTexture];
-
+        
         //On affiche le nom du pack texture selectionné dans l'UI:
         textureNameUI.text = selectedTexturePack.getTextureName();
 
         //On récupère la preview des prefabs du texture pack sélectionné:
-        Texture2D floorPreview = UnityEditor.AssetPreview.GetAssetPreview(selectedTexturePack.getFloorPrefab());
-        Texture2D destructibleWallPreview = UnityEditor.AssetPreview.GetAssetPreview(selectedTexturePack.getDestructibleWallPrefab());
-        Texture2D indestructibleWallPreview = UnityEditor.AssetPreview.GetAssetPreview(selectedTexturePack.getIndestructibleWallPrefab());
+        Texture2D floorPreview = getAssetPreview(selectedTexturePack.getFloorPrefab());
+        Texture2D destructibleWallPreview = getAssetPreview(selectedTexturePack.getDestructibleWallPrefab());
+        Texture2D indestructibleWallPreview = getAssetPreview(selectedTexturePack.getIndestructibleWallPrefab());
         
         //On affiche la preview des prefabs du texture pack selectionné:
-        Sprite NewSprite = new Sprite();
+        Sprite floorSprite = new Sprite();
+        Sprite destructibleWallSprite = new Sprite();
+        Sprite indestructibleWallSprite = new Sprite();
+        
+        floorSprite = Sprite.Create(floorPreview, new Rect(0, 0, floorPreview.width, floorPreview.height), new Vector2(0, 0), 100.0f);
+        textureFloorPreviewUI.sprite = floorSprite;
 
-        NewSprite = Sprite.Create(floorPreview, new Rect(0, 0, floorPreview.width, floorPreview.height), new Vector2(0, 0), 100.0f);
-        textureFloorPreviewUI.sprite = NewSprite;
+        destructibleWallSprite = Sprite.Create(destructibleWallPreview, new Rect(0, 0, destructibleWallPreview.width, destructibleWallPreview.height), new Vector2(0, 0), 100.0f);
+        textureDestructibleWallPreviewUI.sprite = destructibleWallSprite;
 
-        NewSprite = Sprite.Create(destructibleWallPreview, new Rect(0, 0, destructibleWallPreview.width, destructibleWallPreview.height), new Vector2(0, 0), 100.0f);
-        textureDestructibleWallPreviewUI.sprite = NewSprite;
-
-        NewSprite = Sprite.Create(indestructibleWallPreview, new Rect(0, 0, indestructibleWallPreview.width, indestructibleWallPreview.height), new Vector2(0, 0), 100.0f);
-        textureIndestructibleWallPreviewUI.sprite = NewSprite;
+        indestructibleWallSprite = Sprite.Create(indestructibleWallPreview, new Rect(0, 0, indestructibleWallPreview.width, indestructibleWallPreview.height), new Vector2(0, 0), 100.0f);
+        textureIndestructibleWallPreviewUI.sprite = indestructibleWallSprite;
     }
-
+    
     public void clickButtonPlay()
     {
         //On récupère la Map choisie à envoyer au MapGenerator:
@@ -192,6 +195,7 @@ public class UILevelMenuScript : MonoBehaviour {
         {
             selectedMap = 0;
         }
+        updateMapAndTexturePreview();
     }
 
     public void clickButtonGoLeftMap()
@@ -204,6 +208,7 @@ public class UILevelMenuScript : MonoBehaviour {
         {
             selectedMap = numberOfMapsDetected - 1;
         }
+        updateMapAndTexturePreview();
     }
 
     public void clickButtonGoRightTexture()
@@ -216,6 +221,7 @@ public class UILevelMenuScript : MonoBehaviour {
         {
             selectedTexture = 0;
         }
+        updateMapAndTexturePreview();
     }
 
     public void clickButtonGoLeftTexture()
@@ -228,6 +234,7 @@ public class UILevelMenuScript : MonoBehaviour {
         {
             selectedTexture = numberOfTexturesDetected - 1;
         }
+        updateMapAndTexturePreview();
     }
 
     public void toggleRandomMap(bool value)
@@ -240,7 +247,13 @@ public class UILevelMenuScript : MonoBehaviour {
         useRandomTexture = textureToggleUI.isOn;
     }
 
-    public Texture2D LoadTexture(string FilePath)
+    private void updateMapAndTexturePreview()
+    {
+        updateMaps();
+        updateTextures();
+    }
+
+    private Texture2D LoadTexture(string FilePath)
     {
 
         // Load a PNG or JPG file from disk to a Texture2D
@@ -257,5 +270,21 @@ public class UILevelMenuScript : MonoBehaviour {
                 return Tex2D;                 // If data = readable -> return texture
         }
         return null;                     // Return null if load failed
+    }
+
+    // GetAssetPreview is really running asynchronously in the background, and if the preview you want is not available when you ask for it you will get a null instead of a texture.
+    private Texture2D getAssetPreview(GameObject objectToPreview)
+    {
+        int counter = 0;
+        Texture2D previewOfTheObject = null;
+
+        while (previewOfTheObject == null && counter < 75)
+        {
+            previewOfTheObject = AssetPreview.GetAssetPreview(objectToPreview);
+            counter++;
+            System.Threading.Thread.Sleep(15);
+        }
+
+        return previewOfTheObject;
     }
 }

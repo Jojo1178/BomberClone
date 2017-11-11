@@ -24,16 +24,22 @@ public class TexturePack
 
     public GameObject getFloorPrefab()
     {
+        if (floorPrefab == null)
+            Debug.Log("<color=red>ACHTUNG !</color> Floor Prefab null for texture pack "+textureName);
         return this.floorPrefab;
     }
 
     public GameObject getDestructibleWallPrefab()
     {
+        if (destructibleWallPrefab == null)
+            Debug.Log("<color=red>ACHTUNG !</color> DestructibleWall Prefab null for texture pack " + textureName);
         return this.destructibleWallPrefab;
     }
 
     public GameObject getIndestructibleWallPrefab()
     {
+        if (indestructibleWallPrefab == null)
+            Debug.Log("<color=red>ACHTUNG !</color> IndestructibleWall Prefab null for texture pack " + textureName);
         return this.indestructibleWallPrefab;
     }
 }
