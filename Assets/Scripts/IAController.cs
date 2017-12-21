@@ -23,10 +23,12 @@ public class IAController : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (Input.GetKeyUp(this.BombKey))
+        //TODO
+        /*if (Input.GetKeyUp(this.BombKey))
         {
             this.CanDropBombs = true;
         }
+        */
     }
 
     private void FixedUpdate()
