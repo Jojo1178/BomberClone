@@ -3828,6 +3828,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerA: {fileID: 1195916429979880, guid: 03d7c0489bcc5eb4f9462a4eefc64235, type: 2}
+  playerB: {fileID: 1707200457928352, guid: a7371b1c37c61934289d07b89b0e4bd9, type: 2}
+  playerC: {fileID: 1707200457928352, guid: a7371b1c37c61934289d07b89b0e4bd9, type: 2}
+  playerD: {fileID: 1707200457928352, guid: a7371b1c37c61934289d07b89b0e4bd9, type: 2}
 --- !u!4 &1504257091
 Transform:
   m_ObjectHideFlags: 0

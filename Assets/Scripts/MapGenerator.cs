@@ -9,6 +9,9 @@ public class MapGenerator : MonoBehaviour
 {
     //Players prefabs:
     public GameObject playerA;
+    public GameObject playerB;
+    public GameObject playerC;
+    public GameObject playerD;
 
     //Prefabs used to create the map:
     private GameObject floor;
@@ -110,6 +113,10 @@ public class MapGenerator : MonoBehaviour
     //2 -> Destructive Wall
     //3 -> Non Destructive Wall
     //4 -> Spawn player A
+    //5 -> Spawn player B
+    //6 -> Spawn player C
+    //7 -> Spawn player D
+
     private void instanciateMap(int[,] map)
     {
         for (int x = 0; x < map.GetLength(0); x++)
@@ -135,6 +142,21 @@ public class MapGenerator : MonoBehaviour
                         //For players positions, we instanciate a Floor tile + Player prefab
                         Instantiate(floor, new Vector3(x, y, 0), Quaternion.identity);
                         Instantiate(playerA, new Vector3(x, y, 0), Quaternion.identity);
+                        break;
+                    case 5:
+                        //For players positions, we instanciate a Floor tile + Player prefab
+                        Instantiate(floor, new Vector3(x, y, 0), Quaternion.identity);
+                        Instantiate(playerB, new Vector3(x, y, 0), Quaternion.identity);
+                        break;
+                    case 6:
+                        //For players positions, we instanciate a Floor tile + Player prefab
+                        Instantiate(floor, new Vector3(x, y, 0), Quaternion.identity);
+                        Instantiate(playerC, new Vector3(x, y, 0), Quaternion.identity);
+                        break;
+                    case 7:
+                        //For players positions, we instanciate a Floor tile + Player prefab
+                        Instantiate(floor, new Vector3(x, y, 0), Quaternion.identity);
+                        Instantiate(playerD, new Vector3(x, y, 0), Quaternion.identity);
                         break;
                 }
             }
