@@ -4,15 +4,6 @@ using UnityEngine;
 
 public class IAController : MonoBehaviour
 {
-
-
-    /*Keyboard controls*/
-    public KeyCode UpKey;
-    public KeyCode LeftKey;
-    public KeyCode RightKey;
-    public KeyCode DownKey;
-    public KeyCode BombKey;
-
     /*Speed*/
     public float MaxSpeed = 10f;
 
@@ -41,30 +32,29 @@ public class IAController : MonoBehaviour
     private void FixedUpdate()
     {
         Debug.Log("IA HERE. CALCULATING MY MOVEMENT");
-
+        
         Vector2 movement = Vector2.zero;
-        if (Input.GetKey(this.UpKey))
-        { //Up movement
-            movement.y = MaxSpeed;
-        }
-        if (Input.GetKey(this.LeftKey))
-        { //Left movement
-            movement.x = -MaxSpeed;
-        }
-        if (Input.GetKey(this.RightKey))
-        { //Right movement
-            movement.x = MaxSpeed;
-        }
-        if (Input.GetKey(this.DownKey))
-        { //Down movement
-            movement.y = -MaxSpeed;
-        }
+
+        //Up movement
+        //movement.y = MaxSpeed;
+
+        //Left movement
+        //movement.x = -MaxSpeed;
+
+        //Right movement
+        //movement.x = MaxSpeed;
+
+        //Down movement
+        //movement.y = -MaxSpeed;
+        
         animator.SetFloat("SpeedX", this.rigidBody.velocity.x);
         animator.SetFloat("SpeedY", this.rigidBody.velocity.y);
         this.rigidBody.velocity = movement;
-        if (this.CanDropBombs && Input.GetKey(this.BombKey))
-        { //Drop bomb
-            DropBomb();
+
+        //Drop bomb
+        if (this.CanDropBombs)
+        {  
+            //DropBomb();
         }
     }
 
