@@ -20,6 +20,7 @@ public class IAController : MonoBehaviour
     public AudioClip[] sound_bomb_drop;
     public AudioClip[] sound_player_death;
 
+    public GameObject IAIntelligence;
 
     private void LateUpdate()
     {
@@ -34,8 +35,13 @@ public class IAController : MonoBehaviour
     private void FixedUpdate()
     {
         Debug.Log("IA HERE. CALCULATING MY MOVEMENT");
-        
+
         Vector2 movement = Vector2.zero;
+
+        //Appeller l'IA:
+        //GameObject ia = GameObject.Find("IAIntelligence");
+        //IAIntelligence intelligence = ia.GetComponent<IAIntelligence>();
+        
 
         //Up movement
         //movement.y = MaxSpeed;
@@ -48,7 +54,7 @@ public class IAController : MonoBehaviour
 
         //Down movement
         //movement.y = -MaxSpeed;
-        
+
         animator.SetFloat("SpeedX", this.rigidBody.velocity.x);
         animator.SetFloat("SpeedY", this.rigidBody.velocity.y);
         this.rigidBody.velocity = movement;

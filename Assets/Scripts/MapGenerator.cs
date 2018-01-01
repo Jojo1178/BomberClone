@@ -19,6 +19,9 @@ public class MapGenerator : MonoBehaviour
     private GameObject indestructibleWall;
     
     private int mapSize = 10;
+    private int IANumber = 2; //TODO: Mettre le paramètre dans une GUI
+
+    private int[,] loadedMap;
 
     // Use this for initialization
     void Start ()
@@ -72,7 +75,7 @@ public class MapGenerator : MonoBehaviour
     private void createMap(string mapFilePath)
     {
         //We load the choosen map from its text file and instanciate it:
-        int[,] loadedMap = Load(mapFilePath);
+        this.loadedMap = Load(mapFilePath);
         instanciateMap(loadedMap);
     }
 
@@ -141,22 +144,25 @@ public class MapGenerator : MonoBehaviour
                     case 4:
                         //For players positions, we instanciate a Floor tile + Player prefab
                         Instantiate(floor, new Vector3(x, y, 0), Quaternion.identity);
-                        Instantiate(playerA, new Vector3(x, y, 0), Quaternion.identity);
+                        playerA = Instantiate(playerA, new Vector3(x, y, 0), Quaternion.identity);
                         break;
                     case 5:
                         //For players positions, we instanciate a Floor tile + Player prefab
                         Instantiate(floor, new Vector3(x, y, 0), Quaternion.identity);
-                        Instantiate(playerB, new Vector3(x, y, 0), Quaternion.identity);
+                        if (IANumber >= 1)
+                            playerB = Instantiate(playerB, new Vector3(x, y, 0), Quaternion.identity);
                         break;
                     case 6:
                         //For players positions, we instanciate a Floor tile + Player prefab
                         Instantiate(floor, new Vector3(x, y, 0), Quaternion.identity);
-                        Instantiate(playerC, new Vector3(x, y, 0), Quaternion.identity);
+                        if (IANumber >= 2)
+                            playerC = Instantiate(playerC, new Vector3(x, y, 0), Quaternion.identity);
                         break;
                     case 7:
                         //For players positions, we instanciate a Floor tile + Player prefab
                         Instantiate(floor, new Vector3(x, y, 0), Quaternion.identity);
-                        Instantiate(playerD, new Vector3(x, y, 0), Quaternion.identity);
+                        if (IANumber >= 3)
+                            playerD = Instantiate(playerD, new Vector3(x, y, 0), Quaternion.identity);
                         break;
                 }
             }
@@ -207,5 +213,30 @@ public class MapGenerator : MonoBehaviour
         {
             map[mapSize - 1, y] = 3;
         }
+    }
+
+    public int[,] getLoadedMap()
+    {
+        return loadedMap;
+    }
+
+    public GameObject getPlayerA()
+    {
+        return playerA;
+    }
+
+    public GameObject getPlayerB()
+    {
+        return playerB;
+    }
+
+    public GameObject getPlayerC()
+    {
+        return playerC;
+    }
+
+    public GameObject getPlayerD()
+    {
+        return playerD;
     }
 }

@@ -28,7 +28,6 @@ public class PlayerController : MonoBehaviour {
     public AudioClip[] sound_bomb_drop;
     public AudioClip[] sound_player_death;
 
-
     private void LateUpdate() {
         if (Input.GetKeyUp(this.BombKey)) {
             this.CanDropBombs = true;
@@ -49,6 +48,7 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetKey(this.DownKey)) { //Down movement
             movement.y = -MaxSpeed;
         }
+
         animator.SetFloat("SpeedX", this.rigidBody.velocity.x);
         animator.SetFloat("SpeedY", this.rigidBody.velocity.y);
         this.rigidBody.velocity = movement;
@@ -83,5 +83,10 @@ public class PlayerController : MonoBehaviour {
 
         Debug.Log(this.gameObject.name + " has been DELETED");
         Destroy(this.gameObject);
+    }
+
+    public Rigidbody2D getRigidBody()
+    {
+        return rigidBody;
     }
 }
