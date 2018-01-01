@@ -220,6 +220,11 @@ public class MapGenerator : MonoBehaviour
         return loadedMap;
     }
 
+    public int getIANumber()
+    {
+        return IANumber;
+    }
+
     public GameObject getPlayerA()
     {
         return playerA;

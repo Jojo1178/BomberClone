@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class IAIntelligence : MonoBehaviour {
 
-    enum State { OFFENSIVE, DEFENSIVE };
+    enum State {OFFENSIVE, DEFENSIVE};
 
     public GameObject mapManager;
 
     private int[,] map;
+    private int IANumber;
     private float xPlayerA;
     private float yPlayerA;
     private float xPlayerB;
@@ -28,9 +29,10 @@ public class IAIntelligence : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        ////On récupère les infomations sur les positions des joueurs dans le MapGenerator:
-        //MapGenerator mapGenerator = mapManager.GetComponent<MapGenerator>();
-        //map = mapGenerator.getLoadedMap();
+        //On récupère les infomations sur les positions des joueurs dans le MapGenerator:
+        MapGenerator mapGenerator = mapManager.GetComponent<MapGenerator>();
+        map = mapGenerator.getLoadedMap();
+        IANumber = mapGenerator.getIANumber();
 
         ////On met à jour la position des différents joueurs:
         //GameObject playerA = mapGenerator.getPlayerA();
