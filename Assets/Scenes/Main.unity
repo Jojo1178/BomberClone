@@ -5232,6 +5232,7 @@ MonoBehaviour:
   textureIndestructibleWallPreviewUI: {fileID: 834477783}
   mapToggleUI: {fileID: 1244744364}
   textureToggleUI: {fileID: 583794710}
+  iaNumberUI: {fileID: 33777483}
   floors:
   - {fileID: 1016029755818278, guid: dc9fc2258a9aa2745ac08dfb55b13225, type: 2}
   - {fileID: 1878961183235968, guid: f22e6c555bfcb4849bf4b935f2a818df, type: 2}

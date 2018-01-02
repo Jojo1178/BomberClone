@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
@@ -18,6 +19,9 @@ public class UILevelMenuScript : MonoBehaviour {
     public Image textureIndestructibleWallPreviewUI;
     public Toggle mapToggleUI;
     public Toggle textureToggleUI;
+
+    //Composants de l'UI avec des infos à récupérer:
+    public InputField iaNumberUI;
 
     //Dictionaires de textures et cartes:
     private Dictionary<int, string> mapNameDictionary = new Dictionary<int, string>();
@@ -149,8 +153,13 @@ public class UILevelMenuScript : MonoBehaviour {
         //On récupère le TexturePack choisi à envoyer au MapGenerator:
         TexturePack choosenTexturePack = chooseTexture();
 
-        //On envoie les informations au MapGenerator:
+        //On récupère le MapGenerator:
         MapGenerator mapGenerator = mapManager.GetComponent<MapGenerator>();
+
+        //On récupère le nombre de joueurs IA:
+        mapGenerator.setIANumber(chooseIANumber());
+
+        //On envoie les informations au MapGenerator:
         mapGenerator.launchLevel(choosenMapFilePath, choosenTexturePack);
     }
 
@@ -183,6 +192,25 @@ public class UILevelMenuScript : MonoBehaviour {
         }
         
         return textureDictionary[textureNumber];
+    }
+
+    private int chooseIANumber()
+    {
+        int iaNumber = 0;
+        string stringFromUI = iaNumberUI.text;
+
+        if (stringFromUI.Equals(""))
+            return 0;
+
+        try
+        {
+            iaNumber = int.Parse(stringFromUI);
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError("Wrong value written in UI "+ex);
+        }
+        return iaNumber;
     }
 
     public void clickButtonGoRightMap()

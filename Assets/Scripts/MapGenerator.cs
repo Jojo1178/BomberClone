@@ -225,6 +225,11 @@ public class MapGenerator : MonoBehaviour
         return IANumber;
     }
 
+    public void setIANumber(int IANumber)
+    {
+        this.IANumber = IANumber;
+    }
+
     public GameObject getPlayerA()
     {
         return playerA;
