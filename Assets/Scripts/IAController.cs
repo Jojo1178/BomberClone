@@ -39,9 +39,7 @@ public class IAController : MonoBehaviour
         Vector2 movement = Vector2.zero;
 
         //Appeller l'IA:
-        //GameObject ia = GameObject.Find("IAIntelligence");
-        //IAIntelligence intelligence = ia.GetComponent<IAIntelligence>();
-        
+        //IAIntelligence.INSTANCE.calculateIA();
 
         //Up movement
         //movement.y = MaxSpeed;
