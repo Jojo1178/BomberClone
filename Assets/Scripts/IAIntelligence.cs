@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class IAIntelligence : MonoBehaviour {
 
+    public static IAIntelligence INSTANCE;
+
     enum State {OFFENSIVE, DEFENSIVE};
 
     public GameObject mapManager;
@@ -19,6 +21,11 @@ public class IAIntelligence : MonoBehaviour {
     private float xPlayerD;
     private float yPlayerD;
 
+
+    private void Awake()
+    {
+        INSTANCE = this;
+    }
 
     // Use this for initialization
     void Start ()

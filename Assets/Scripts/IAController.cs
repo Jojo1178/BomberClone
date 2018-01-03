@@ -20,8 +20,6 @@ public class IAController : MonoBehaviour
     public AudioClip[] sound_bomb_drop;
     public AudioClip[] sound_player_death;
 
-    public GameObject IAIntelligence;
-
     private void LateUpdate()
     {
         //TODO
