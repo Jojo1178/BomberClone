@@ -21,7 +21,6 @@ public class IAIntelligence : MonoBehaviour {
     private float xPlayerD;
     private float yPlayerD;
 
-
     private void Awake()
     {
         INSTANCE = this;
@@ -41,31 +40,45 @@ public class IAIntelligence : MonoBehaviour {
         map = mapGenerator.getLoadedMap();
         IANumber = mapGenerator.getIANumber();
 
-        ////On met à jour la position des différents joueurs:
-        //GameObject playerA = mapGenerator.getPlayerA();
-        //GameObject playerB = mapGenerator.getPlayerB();
-        //GameObject playerC = mapGenerator.getPlayerC();
-        //GameObject playerD = mapGenerator.getPlayerD();
+        //On met à jour la position des différents joueurs:
+        GameObject playerA = mapGenerator.getPlayerA();
+        GameObject playerB = mapGenerator.getPlayerB();
+        GameObject playerC = mapGenerator.getPlayerC();
+        GameObject playerD = mapGenerator.getPlayerD();
 
-        //PlayerController pcA = playerA.GetComponent<PlayerController>();
-        //Rigidbody2D rbA = pcA.getRigidBody();
-        //xPlayerA = rbA.position.x;
-        //yPlayerA = rbA.position.y;
 
-        //PlayerController pcB = playerB.GetComponent<PlayerController>();
-        //Rigidbody2D rbB = pcB.getRigidBody();
-        //xPlayerB = rbB.position.x;
-        //yPlayerB = rbB.position.y;
+        Rigidbody2D rbA = playerA.GetComponent<Rigidbody2D>();
+        xPlayerA = rbA.position.x;
+        yPlayerA = rbA.position.y;
 
-        //PlayerController pcC = playerC.GetComponent<PlayerController>();
-        //Rigidbody2D rbC = pcC.getRigidBody();
-        //xPlayerC = rbC.position.x;
-        //yPlayerC = rbC.position.y;
+        Debug.Log("Player A is located in: " + (int)xPlayerA + "," + (int)yPlayerA);
 
-        //PlayerController pcD = playerD.GetComponent<PlayerController>();
-        //Rigidbody2D rbD = pcD.getRigidBody();
-        //xPlayerD = rbD.position.x;
-        //yPlayerD = rbD.position.y;
+        if (IANumber >= 1)
+        {
+            Rigidbody2D rbB = playerB.GetComponent<Rigidbody2D>();
+            xPlayerB = rbB.position.x;
+            yPlayerB = rbB.position.y;
+
+            Debug.Log("Player B is located in: " + (int)xPlayerB + "," + (int)yPlayerB);
+        }
+
+        if (IANumber >= 2)
+        {
+            Rigidbody2D rbC = playerC.GetComponent<Rigidbody2D>();
+            xPlayerC = rbC.position.x;
+            yPlayerC = rbC.position.y;
+
+            Debug.Log("Player C is located in: " + (int)xPlayerC + "," + (int)yPlayerC);
+        }
+
+        if (IANumber >= 3)
+        {
+            Rigidbody2D rbD = playerD.GetComponent<Rigidbody2D>();
+            xPlayerD = rbD.position.x;
+            yPlayerD = rbD.position.y;
+
+            Debug.Log("Player D is located in: " + (int)xPlayerD + "," + (int)yPlayerD);
+        }
     }
 
     public void calculateIA()

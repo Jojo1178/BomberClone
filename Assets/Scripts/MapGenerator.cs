@@ -19,7 +19,7 @@ public class MapGenerator : MonoBehaviour
     private GameObject indestructibleWall;
     
     private int mapSize = 10;
-    private int IANumber = 2; //TODO: Mettre le paramètre dans une GUI
+    private int IANumber = 0; //TODO: Mettre le paramètre dans une GUI
 
     private int[,] loadedMap;
 
@@ -150,7 +150,7 @@ public class MapGenerator : MonoBehaviour
                         //For players positions, we instanciate a Floor tile + Player prefab
                         Instantiate(floor, new Vector3(x, y, 0), Quaternion.identity);
                         if (IANumber >= 1)
-                            playerB = Instantiate(playerB, new Vector3(x, y, 0), Quaternion.identity);
+                            playerB = Instantiate(playerB, new Vector3(x, y, 0), Quaternion.identity);    
                         break;
                     case 6:
                         //For players positions, we instanciate a Floor tile + Player prefab

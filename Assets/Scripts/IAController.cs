@@ -32,12 +32,10 @@ public class IAController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log("IA HERE. CALCULATING MY MOVEMENT");
-
         Vector2 movement = Vector2.zero;
 
         //Appeller l'IA:
-        //IAIntelligence.INSTANCE.calculateIA();
+        IAIntelligence.INSTANCE.calculateIA();
 
         //Up movement
         //movement.y = MaxSpeed;
