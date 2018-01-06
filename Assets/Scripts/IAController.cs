@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,44 +21,39 @@ public class IAController : MonoBehaviour
     public AudioClip[] sound_bomb_drop;
     public AudioClip[] sound_player_death;
 
-    private void LateUpdate()
+    private Vector2 objective;
+    private bool offensiveMode = true;
+
+    private void Awake()
     {
-        //TODO
-        /*if (Input.GetKeyUp(this.BombKey))
-        {
-            this.CanDropBombs = true;
-        }
-        */
+        objective = this.transform.position;
+        offensiveMode = IAIntelligence.INSTANCE.getObjective(this.transform.position, ref this.objective);
     }
 
     private void FixedUpdate()
     {
-        Vector2 movement = Vector2.zero;
-
-        //Appeller l'IA:
-        IAIntelligence.INSTANCE.calculateIA();
-
-        //Up movement
-        //movement.y = MaxSpeed;
-
-        //Left movement
-        //movement.x = -MaxSpeed;
-
-        //Right movement
-        //movement.x = MaxSpeed;
-
-        //Down movement
-        //movement.y = -MaxSpeed;
+        if (isOjectiveReached())
+        {
+            this.transform.position = this.objective;
+            //Drop bomb
+            if (this.CanDropBombs && offensiveMode && UnityEngine.Random.Range(1, 7) == 7)
+            {
+                DropBomb();
+            }
+            //Appeller l'IA:
+            offensiveMode = IAIntelligence.INSTANCE.getObjective(this.transform.position, ref this.objective);
+        }
+        Vector2 dir = this.objective - (Vector2)this.transform.position;
+        Vector2 movement = dir * MaxSpeed;
 
         animator.SetFloat("SpeedX", this.rigidBody.velocity.x);
         animator.SetFloat("SpeedY", this.rigidBody.velocity.y);
         this.rigidBody.velocity = movement;
+    }
 
-        //Drop bomb
-        if (this.CanDropBombs)
-        {  
-            //DropBomb();
-        }
+    private bool isOjectiveReached()
+    {
+        return Vector2.Distance(this.objective, (Vector2)this.transform.position) < .5f;
     }
 
     /// <summary>

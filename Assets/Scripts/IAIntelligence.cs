@@ -191,25 +191,95 @@ public class IAIntelligence : MonoBehaviour {
         }
     }
 
-    public void calculateIA()
+    //Retourne true si la position est sur une case bloqué (block/bomb/perso)
+    private bool isBlockedPosition(Vector2 iaPosition)
     {
-        calculateStrategy();
-        calculateMovement();
-        calculateAttack();
+        //TODO
+        throw new NotImplementedException();
+    }
+    
+
+    //Retourne true si la position est sur une case dangeureuse (bomb/flame)
+    private bool isDangerousPosition(Vector2 iaPosition)
+    {
+        //TODO
+        throw new NotImplementedException();
     }
 
-    private void calculateStrategy()
+    public bool getObjective(Vector2 iaPosition, ref Vector2 iaObjective)
     {
-
+        if (isDangerousPosition(iaPosition))
+        {
+            getOffensiveGoal(iaPosition, ref iaObjective);
+            return true;
+        }
+        else
+        {
+            getDefensiveGoal(iaPosition, ref iaObjective);
+            return false;
+        }
     }
 
-    private void calculateMovement()
+    private void getOffensiveGoal(Vector2 iaPosition, ref Vector2 iaObjective)
     {
+        int nx = UnityEngine.Random.Range(0, 2);
+        int ny = UnityEngine.Random.Range(0, 2);
+        int[] dir = { -1, 0, 1 };
 
+        Vector2 newPos = iaPosition + new Vector2(dir[nx], dir[ny]);
+        if (!isDangerousPosition(newPos) && isBlockedPosition(newPos))
+        {
+            iaObjective = newPos;
+        }
     }
 
-    private void calculateAttack()
+    private void getDefensiveGoal(Vector2 iaPosition, ref Vector2 iaObjective)
     {
+        List<Vector2> path = getClosestSafePositionPath(iaPosition);
+        if(path.Count > 1)
+        {
+            iaObjective = path[1];
+        }
+    }
 
-    } 
+
+    private List<Vector2> getClosestSafePositionPath(Vector2 initialPosition)
+    {
+        Queue<Vector2> todo = new Queue<Vector2>();
+        List<Vector2> done = new List<Vector2>();
+        Dictionary<Vector2, List<Vector2>> paths = new Dictionary<Vector2, List<Vector2>>();
+
+        todo.Enqueue(initialPosition);
+        paths.Add(initialPosition, new List<Vector2>() { initialPosition });
+        Vector2[] nextPos = { Vector2.up, Vector2.down, Vector2.left, Vector2.right };
+
+        while(todo.Count > 0)
+        {
+            Vector2 current = todo.Dequeue();
+            if (!isDangerousPosition(current)) return paths[current];
+
+            foreach (Vector2 dir in nextPos)
+            {
+                Vector2 newdir = current + dir;
+                if (done.Contains(newdir)) continue;
+                if (!todo.Contains(newdir))
+                {
+                    if (!isBlockedPosition(newdir))
+                    {
+                        List<Vector2> path = paths[current];
+                        path.Add(newdir);
+                        paths.Add(newdir, path);
+                        todo.Enqueue(newdir);
+                    }
+                    else
+                    {
+                        done.Add(newdir);
+                    }
+                }
+                done.Add(current);
+            }
+        }
+        return null;
+    }
+
 }
