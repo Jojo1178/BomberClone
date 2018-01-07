@@ -77,6 +77,9 @@ public class MapGenerator : MonoBehaviour
         //We load the choosen map from its text file and instanciate it:
         this.loadedMap = Load(mapFilePath);
         instanciateMap(loadedMap);
+
+        //Send the map to the IAIntelligence:
+        IAIntelligence.INSTANCE.initializeMap(loadedMap);
     }
 
     private int[,] Load(string fileName)

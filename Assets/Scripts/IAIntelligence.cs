@@ -22,8 +22,8 @@ public class IAIntelligence : MonoBehaviour {
     private float yPlayerC;
     private float xPlayerD;
     private float yPlayerD;
-
-    private bool mapCleaned = false;
+    
+    private bool mapInitialized = false;
 
     private void Awake()
     {
@@ -47,64 +47,65 @@ public class IAIntelligence : MonoBehaviour {
     {
         
     }
+
+    public void initializeMap(int [,] map)
+    {
+        Debug.Log("MAP RECEIVED BY IAIntelligence");
+        this.map = map;
+        removeSpawnValuesFromMap();
+
+        mapInitialized = true;
+    }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        //On récupère les infomations sur les positions des joueurs dans le MapGenerator:
-        MapGenerator mapGenerator = mapManager.GetComponent<MapGenerator>();
-        IANumber = mapGenerator.getIANumber();
-
-        //On récupère la carte une seule fois, pas la peine de la récupérer à chaque appel de l'Update:
-        if (map == null)
+        if (mapInitialized)
         {
-            map = mapGenerator.getLoadedMap();
-        }
-        else if (!mapCleaned)
-        {
-            //Si on a récupéré la map mais qu'elle n'a pas été encore nettoyée, on le fait:
-            removeSpawnValuesFromMap();
-        }
+            //On récupère les infomations sur les positions des joueurs dans le MapGenerator:
+            MapGenerator mapGenerator = mapManager.GetComponent<MapGenerator>();
+            IANumber = mapGenerator.getIANumber();
 
-        //On met à jour la position des différents joueurs:
-        GameObject playerA = mapGenerator.getPlayerA();
-        GameObject playerB = mapGenerator.getPlayerB();
-        GameObject playerC = mapGenerator.getPlayerC();
-        GameObject playerD = mapGenerator.getPlayerD();
+            //On met à jour la position des différents joueurs:
+            GameObject playerA = mapGenerator.getPlayerA();
+            GameObject playerB = mapGenerator.getPlayerB();
+            GameObject playerC = mapGenerator.getPlayerC();
+            GameObject playerD = mapGenerator.getPlayerD();
 
 
-        Rigidbody2D rbA = playerA.GetComponent<Rigidbody2D>();
-        xPlayerA = rbA.position.x;
-        yPlayerA = rbA.position.y;
-        
-        //Debug.Log("Player A is located in: " + (int)xPlayerA + "," + (int)yPlayerA);
+            Rigidbody2D rbA = playerA.GetComponent<Rigidbody2D>();
+            xPlayerA = rbA.position.x;
+            yPlayerA = rbA.position.y;
 
-        if (IANumber >= 1)
-        {
-            Rigidbody2D rbB = playerB.GetComponent<Rigidbody2D>();
-            xPlayerB = rbB.position.x;
-            yPlayerB = rbB.position.y;
+            //Debug.Log("Player A is located in: " + (int)xPlayerA + "," + (int)yPlayerA);
 
-            //Debug.Log("Player B is located in: " + (int)xPlayerB + "," + (int)yPlayerB);
-        }
+            if (IANumber >= 1)
+            {
+                Rigidbody2D rbB = playerB.GetComponent<Rigidbody2D>();
+                xPlayerB = rbB.position.x;
+                yPlayerB = rbB.position.y;
 
-        if (IANumber >= 2)
-        {
-            Rigidbody2D rbC = playerC.GetComponent<Rigidbody2D>();
-            xPlayerC = rbC.position.x;
-            yPlayerC = rbC.position.y;
+                //Debug.Log("Player B is located in: " + (int)xPlayerB + "," + (int)yPlayerB);
+            }
 
-            //Debug.Log("Player C is located in: " + (int)xPlayerC + "," + (int)yPlayerC);
-        }
+            if (IANumber >= 2)
+            {
+                Rigidbody2D rbC = playerC.GetComponent<Rigidbody2D>();
+                xPlayerC = rbC.position.x;
+                yPlayerC = rbC.position.y;
 
-        if (IANumber >= 3)
-        {
-            Rigidbody2D rbD = playerD.GetComponent<Rigidbody2D>();
-            xPlayerD = rbD.position.x;
-            yPlayerD = rbD.position.y;
+                //Debug.Log("Player C is located in: " + (int)xPlayerC + "," + (int)yPlayerC);
+            }
 
-            //Debug.Log("Player D is located in: " + (int)xPlayerD + "," + (int)yPlayerD);
-        }
+            if (IANumber >= 3)
+            {
+                Rigidbody2D rbD = playerD.GetComponent<Rigidbody2D>();
+                xPlayerD = rbD.position.x;
+                yPlayerD = rbD.position.y;
+
+                //Debug.Log("Player D is located in: " + (int)xPlayerD + "," + (int)yPlayerD);
+            }
+        }        
     }
 
     public void addBombToMap(float x, float y)
@@ -134,6 +135,7 @@ public class IAIntelligence : MonoBehaviour {
     //qui correspond à un Floor afin de faciliter les traitements:
     private void removeSpawnValuesFromMap()
     {
+        Debug.Log("REMOVING SPAWN VALUES FROM MAP");
         this.writeMapInLogFile(this.map, "BEFORE REMOVING SPAWN VALUES");
 
         for (int x = 0; x < map.GetLength(0); x++)
@@ -148,8 +150,8 @@ public class IAIntelligence : MonoBehaviour {
                 }
             }
         }
-        mapCleaned = true;
-        
+
+        Debug.Log("SPAWN VALUES REMOVED FROM MAP");
         this.writeMapInLogFile(this.map, "SPAWN VALUES REMOVED");
     }
 
@@ -171,7 +173,7 @@ public class IAIntelligence : MonoBehaviour {
             {
                 for (int y = 0; y < map.GetLength(1); y++)
                 {
-                    Debug.Log(map[x, y] + " ");
+                    //Debug.Log(map[x, y] + " ");
                     sw.Write(map[x, y] + " ");
                 }
                 sw.WriteLine("");
