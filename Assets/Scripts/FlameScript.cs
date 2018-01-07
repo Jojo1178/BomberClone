@@ -10,6 +10,12 @@ public class FlameScript : MonoBehaviour {
     private List<GameObject> collided = new List<GameObject>();
     private GameObject lightGameObject;
 
+    private void Start()
+    {
+        //Send the flame location to the IAIntelligence:
+        IAIntelligence.INSTANCE.addFlameToMap(Mathf.Round(this.transform.localPosition.x), Mathf.Round(this.transform.localPosition.y));
+    }
+
     private void OnEnable() {
         StartCoroutine(TimeFlame());
     }
@@ -18,6 +24,9 @@ public class FlameScript : MonoBehaviour {
         yield return new WaitForSeconds(this.Timer);
         Destroy(this.gameObject);
         Destroy(this.lightGameObject);
+
+        //Remove the flame location from the map used by IAIntelligence:
+        IAIntelligence.INSTANCE.removeEntityFromMap(Mathf.Round(this.transform.localPosition.x), Mathf.Round(this.transform.localPosition.y), "FLAME");
     }
 
     /// <summary>

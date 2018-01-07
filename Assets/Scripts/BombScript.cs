@@ -16,6 +16,12 @@ public class BombScript : MonoBehaviour {
     /*Sounds*/
     public AudioClip[] sound_bomb_explosion;
 
+    private void Start()
+    {
+        //Send the bomb location to the IAIntelligence:
+        IAIntelligence.INSTANCE.addBombToMap(Mathf.Round(this.transform.localPosition.x), Mathf.Round(this.transform.localPosition.y));
+    }
+
     private void OnEnable() {
         this.Collider.enabled = false;
         this.creatorLeft = false;
@@ -43,6 +49,9 @@ public class BombScript : MonoBehaviour {
         CreateFlame(this.transform.localPosition , Vector3.down);
 
         Destroy(this.gameObject);
+
+        //Remove the bomb location from the map used by IAIntelligence:
+        IAIntelligence.INSTANCE.removeEntityFromMap(Mathf.Round(this.transform.localPosition.x), Mathf.Round(this.transform.localPosition.y), "BOMB");
     }
 
     private void CreateFlame(Vector3 position,Vector3 direction) {
