@@ -72,14 +72,17 @@ public class IAIntelligence : MonoBehaviour {
             GameObject playerC = mapGenerator.getPlayerC();
             GameObject playerD = mapGenerator.getPlayerD();
 
+            if (playerA != null)
+            {
+                Rigidbody2D rbA = playerA.GetComponent<Rigidbody2D>();
+                xPlayerA = rbA.position.x;
+                yPlayerA = rbA.position.y;
 
-            Rigidbody2D rbA = playerA.GetComponent<Rigidbody2D>();
-            xPlayerA = rbA.position.x;
-            yPlayerA = rbA.position.y;
+                //Debug.Log("Player A is located in: " + (int)xPlayerA + "," + (int)yPlayerA);
+            }
 
-            //Debug.Log("Player A is located in: " + (int)xPlayerA + "," + (int)yPlayerA);
 
-            if (IANumber >= 1)
+            if (IANumber >= 1 && playerB != null)
             {
                 Rigidbody2D rbB = playerB.GetComponent<Rigidbody2D>();
                 xPlayerB = rbB.position.x;
@@ -88,7 +91,7 @@ public class IAIntelligence : MonoBehaviour {
                 //Debug.Log("Player B is located in: " + (int)xPlayerB + "," + (int)yPlayerB);
             }
 
-            if (IANumber >= 2)
+            if (IANumber >= 2 && playerC != null)
             {
                 Rigidbody2D rbC = playerC.GetComponent<Rigidbody2D>();
                 xPlayerC = rbC.position.x;
@@ -97,7 +100,7 @@ public class IAIntelligence : MonoBehaviour {
                 //Debug.Log("Player C is located in: " + (int)xPlayerC + "," + (int)yPlayerC);
             }
 
-            if (IANumber >= 3)
+            if (IANumber >= 3 && playerD != null)
             {
                 Rigidbody2D rbD = playerD.GetComponent<Rigidbody2D>();
                 xPlayerD = rbD.position.x;
