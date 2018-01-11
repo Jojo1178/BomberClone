@@ -74,9 +74,8 @@ public class IAIntelligence : MonoBehaviour {
 
             if (playerA != null)
             {
-                Rigidbody2D rbA = playerA.GetComponent<Rigidbody2D>();
-                xPlayerA = rbA.position.x;
-                yPlayerA = rbA.position.y;
+                xPlayerA = playerA.transform.position.x;
+                yPlayerA = playerA.transform.position.y;
 
                 //Debug.Log("Player A is located in: " + (int)xPlayerA + "," + (int)yPlayerA);
             }
@@ -84,27 +83,24 @@ public class IAIntelligence : MonoBehaviour {
 
             if (IANumber >= 1 && playerB != null)
             {
-                Rigidbody2D rbB = playerB.GetComponent<Rigidbody2D>();
-                xPlayerB = rbB.position.x;
-                yPlayerB = rbB.position.y;
+                xPlayerB = playerB.transform.position.x;
+                yPlayerB = playerB.transform.position.y;
 
                 //Debug.Log("Player B is located in: " + (int)xPlayerB + "," + (int)yPlayerB);
             }
 
             if (IANumber >= 2 && playerC != null)
             {
-                Rigidbody2D rbC = playerC.GetComponent<Rigidbody2D>();
-                xPlayerC = rbC.position.x;
-                yPlayerC = rbC.position.y;
+                xPlayerC = playerC.transform.position.x;
+                yPlayerC = playerC.transform.position.y;
 
                 //Debug.Log("Player C is located in: " + (int)xPlayerC + "," + (int)yPlayerC);
             }
 
             if (IANumber >= 3 && playerD != null)
             {
-                Rigidbody2D rbD = playerD.GetComponent<Rigidbody2D>();
-                xPlayerD = rbD.position.x;
-                yPlayerD = rbD.position.y;
+                xPlayerD = playerD.transform.position.x;
+                yPlayerD = playerD.transform.position.y;
 
                 //Debug.Log("Player D is located in: " + (int)xPlayerD + "," + (int)yPlayerD);
             }
@@ -165,7 +161,7 @@ public class IAIntelligence : MonoBehaviour {
         {
 
             //Pass the filepath and filename to the StreamWriter Constructor
-            StreamWriter sw = new StreamWriter("D:\\UnityProjects\\BomberClone\\Assets\\Logs\\log.txt", true);
+            StreamWriter sw = new StreamWriter(Application.dataPath+"\\Logs\\log.txt", true);
 
             sw.WriteLine("===================");
             sw.WriteLine(logInfo);
