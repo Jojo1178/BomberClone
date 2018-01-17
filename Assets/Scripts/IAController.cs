@@ -36,7 +36,8 @@ public class IAController : MonoBehaviour
         {
             this.transform.position = this.objective;
             //Drop bomb
-            if (this.CanDropBombs && offensiveMode && UnityEngine.Random.Range(1, 7) == 7)
+            int drop = UnityEngine.Random.Range(1, 4);
+            if (this.CanDropBombs && offensiveMode && drop == 2)
             {
                 DropBomb();
             }
@@ -53,7 +54,7 @@ public class IAController : MonoBehaviour
 
     private bool isOjectiveReached()
     {
-        return Vector2.Distance(this.objective, (Vector2)this.transform.position) < .5f;
+        return Vector2.Distance(this.objective, (Vector2)this.transform.position) < .01f;
     }
 
     /// <summary>

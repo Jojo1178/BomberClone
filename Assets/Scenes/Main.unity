@@ -4118,6 +4118,7 @@ MonoBehaviour:
   playerB: {fileID: 1664248127224228, guid: a7371b1c37c61934289d07b89b0e4bd9, type: 2}
   playerC: {fileID: 1664248127224228, guid: a7371b1c37c61934289d07b89b0e4bd9, type: 2}
   playerD: {fileID: 1664248127224228, guid: a7371b1c37c61934289d07b89b0e4bd9, type: 2}
+  mapSize: 10
 --- !u!4 &1504257091
 Transform:
   m_ObjectHideFlags: 0
@@ -4333,7 +4334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b57145713ede89f47bf31a5b58d45fa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapManager: {fileID: 1504257089}
+  MapGenerator: {fileID: 1504257090}
 --- !u!4 &1607982471
 Transform:
   m_ObjectHideFlags: 0

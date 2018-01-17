@@ -10,7 +10,7 @@ public class IAIntelligence : MonoBehaviour {
 
     enum State {OFFENSIVE, DEFENSIVE};
 
-    public GameObject mapManager;
+    public MapGenerator MapGenerator;
 
     private int[,] map;
     private int IANumber;
@@ -63,14 +63,13 @@ public class IAIntelligence : MonoBehaviour {
         if (mapInitialized)
         {
             //On récupère les infomations sur les positions des joueurs dans le MapGenerator:
-            MapGenerator mapGenerator = mapManager.GetComponent<MapGenerator>();
-            IANumber = mapGenerator.getIANumber();
+            IANumber = this.MapGenerator.getIANumber();
 
             //On met à jour la position des différents joueurs:
-            GameObject playerA = mapGenerator.getPlayerA();
-            GameObject playerB = mapGenerator.getPlayerB();
-            GameObject playerC = mapGenerator.getPlayerC();
-            GameObject playerD = mapGenerator.getPlayerD();
+            GameObject playerA = this.MapGenerator.getPlayerA();
+            GameObject playerB = this.MapGenerator.getPlayerB();
+            GameObject playerC = this.MapGenerator.getPlayerC();
+            GameObject playerD = this.MapGenerator.getPlayerD();
 
             if (playerA != null)
             {
@@ -186,46 +185,57 @@ public class IAIntelligence : MonoBehaviour {
             Console.WriteLine("Exception: " + e.Message);
         }
     }
-
+    
     //Retourne true si la position est sur une case bloqué (block/bomb/perso)
-    private bool isBlockedPosition(Vector2 iaPosition)
+    private bool isBlockedPosition(Vector2 position)
     {
-        //TODO
-        throw new NotImplementedException();
+        //TODO detect characters
+        int value = this.map[this.MapGenerator.mapSize - (int)position.y - 1, (int)position.x];
+        return value == 2 || value == 3 || value == 8;
     }
     
 
     //Retourne true si la position est sur une case dangeureuse (bomb/flame)
-    private bool isDangerousPosition(Vector2 iaPosition)
+    private bool isDangerousPosition(Vector2 position)
     {
-        //TODO
-        throw new NotImplementedException();
+        int value = this.map[this.MapGenerator.mapSize - (int)position.y - 1, (int)position.x];
+        return value == 8 || value == 9;
     }
 
     public bool getObjective(Vector2 iaPosition, ref Vector2 iaObjective)
     {
-        if (isDangerousPosition(iaPosition))
+        if (mapInitialized)
         {
-            getOffensiveGoal(iaPosition, ref iaObjective);
-            return true;
+            if (!isDangerousPosition(iaPosition))
+            {
+                getOffensiveGoal(iaPosition, ref iaObjective);
+                return true;
+            }
+            else
+            {
+                getDefensiveGoal(iaPosition, ref iaObjective);
+                return false;
+            }
         }
-        else
-        {
-            getDefensiveGoal(iaPosition, ref iaObjective);
-            return false;
-        }
+        return true;
     }
 
     private void getOffensiveGoal(Vector2 iaPosition, ref Vector2 iaObjective)
     {
-        int nx = UnityEngine.Random.Range(0, 2);
-        int ny = UnityEngine.Random.Range(0, 2);
-        int[] dir = { -1, 0, 1 };
+        int idx = UnityEngine.Random.Range(0, 3);
+        List<Vector2> dir = new List<Vector2>(){ Vector2.up, Vector2.down, Vector2.left, Vector2.right };
 
-        Vector2 newPos = iaPosition + new Vector2(dir[nx], dir[ny]);
-        if (!isDangerousPosition(newPos) && isBlockedPosition(newPos))
+        while (dir.Count > 0)
         {
-            iaObjective = newPos;
+            Vector2 newPos = iaPosition + dir[idx];
+            if (!isDangerousPosition(newPos) && !isBlockedPosition(newPos))
+            {
+                iaObjective = newPos;
+                break;
+            }
+            dir.RemoveAt(idx);
+            idx = UnityEngine.Random.Range(0, dir.Count - 1);
+            //TODO: Favorite new position
         }
     }
 

@@ -35,6 +35,7 @@ public class FlameScript : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision) {
         if (this.collided.Contains(collision.gameObject)) return;
         this.collided.Add(collision.gameObject);
+        IAController iac;
         PlayerController pc;
         BombScript bs;
         if (pc = collision.gameObject.GetComponent<PlayerController>()) {
@@ -42,6 +43,10 @@ public class FlameScript : MonoBehaviour {
         }
         if (bs = collision.gameObject.GetComponent<BombScript>()) {
             bs.Explode();
+        }
+        if(iac = collision.gameObject.GetComponent<IAController>())
+        {
+            iac.TouchByExplosion();
         }
     }
 

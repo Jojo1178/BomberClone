@@ -18,7 +18,7 @@ public class MapGenerator : MonoBehaviour
     private GameObject destructibleWall;
     private GameObject indestructibleWall;
     
-    private int mapSize = 10;
+    public int mapSize = 10;
     private int IANumber = 0; //TODO: Mettre le paramètre dans une GUI
 
     private int[,] loadedMap;
