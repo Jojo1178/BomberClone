@@ -110,7 +110,7 @@ public class MapGenerator : MonoBehaviour
 
         //Close the StreamReader:
         reader.Close();
-
+        
         return map;
     }
 
@@ -129,7 +129,7 @@ public class MapGenerator : MonoBehaviour
         {
             for (int y = 0; y < map.GetLength(1); y++)
             {
-                int tileType = map[x, y];
+                int tileType = map[x, map.GetLength(1)-1-y];
 
                 switch (tileType)
                 {
