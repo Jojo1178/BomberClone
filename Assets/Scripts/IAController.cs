@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class IAController : MonoBehaviour
 {
+    /* Gameplay */
+    public float timerBetweenTwoBombs = 5f;
+
     /*Speed*/
     public float MaxSpeed = 10f;
 
@@ -71,6 +74,9 @@ public class IAController : MonoBehaviour
 
             //Play drop bomb sound:
             SoundManager.instance.RandomizeSfx(sound_bomb_drop);
+
+            //When a bomb is planted, we launch a timer to wait before another bomb plant:
+            StartCoroutine(timeBetweenTwoBombs());
         }
     }
 
@@ -86,5 +92,11 @@ public class IAController : MonoBehaviour
 
         Debug.Log(this.gameObject.name + " has been DELETED");
         Destroy(this.gameObject);
+    }
+
+    private IEnumerator timeBetweenTwoBombs()
+    {
+        yield return new WaitForSeconds(this.timerBetweenTwoBombs);
+        this.CanDropBombs = true;
     }
 }
