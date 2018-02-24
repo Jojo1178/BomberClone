@@ -109,14 +109,14 @@ public class IAIntelligence : MonoBehaviour {
     public void addBombToMap(float x, float y)
     {
         this.writeMapInLogFile(this.map, "BEFORE BOMB TO BE PLANTED");
-        map[(int)x, (int)y] = 8;
+        this.map[(int)x, this.map.GetLength(1) - (int)y - 1] = 8;
         this.writeMapInLogFile(this.map, "BOMB PLANTED");
     }
     
     public void addFlameToMap(float x, float y)
     {
         this.writeMapInLogFile(this.map, "BEFORE FLAME TO BE ADDED");
-        map[(int)x, (int)y] = 9;
+        this.map[(int)x, this.map.GetLength(1) - (int)y - 1] = 9;
         this.writeMapInLogFile(this.map, "FLAME ADDED");
     }
 
@@ -125,7 +125,7 @@ public class IAIntelligence : MonoBehaviour {
     public void removeEntityFromMap(float x, float y, string entity)
     {
         this.writeMapInLogFile(this.map, "BEFORE "+entity+" TO BE REMOVED");
-        map[(int)x, (int)y] = 1;
+        this.map[(int)x, this.map.GetLength(1) - (int)y - 1] = 1;
         this.writeMapInLogFile(this.map, entity+" REMOVED");
     }
 
@@ -136,15 +136,15 @@ public class IAIntelligence : MonoBehaviour {
         Debug.Log("REMOVING SPAWN VALUES FROM MAP");
         this.writeMapInLogFile(this.map, "BEFORE REMOVING SPAWN VALUES");
 
-        for (int x = 0; x < map.GetLength(0); x++)
+        for (int x = 0; x < this.map.GetLength(0); x++)
         {
-            for (int y = 0; y < map.GetLength(1); y++)
+            for (int y = 0; y < this.map.GetLength(1); y++)
             {
-                int tileType = map[x, y];
+                int tileType = this.map[x, this.map.GetLength(1) - y - 1];
 
                 if (tileType == 4 || tileType == 5 || tileType  == 6 || tileType == 7)
                 {
-                    map[x, y] = 1;
+                    this.map[x, this.map.GetLength(1) - y - 1] = 1;
                 }
             }
         }
@@ -172,7 +172,7 @@ public class IAIntelligence : MonoBehaviour {
                 for (int y = 0; y < map.GetLength(1); y++)
                 {
                     //Debug.Log(map[x, y] + " ");
-                    sw.Write(map[x, y] + " ");
+                    sw.Write(map[(int)x, map.GetLength(1) - (int)y - 1] + " ");
                 }
                 sw.WriteLine("");
             }
@@ -190,7 +190,7 @@ public class IAIntelligence : MonoBehaviour {
     private bool isBlockedPosition(Vector2 position)
     {
         //TODO detect characters
-        int value = this.map[this.MapGenerator.mapSize - (int)position.y - 1, (int)position.x];
+        int value = this.map[(int)position.x, this.MapGenerator.mapSize - (int)position.y - 1];
         return value == 2 || value == 3 || value == 8;
     }
     
@@ -198,7 +198,7 @@ public class IAIntelligence : MonoBehaviour {
     //Retourne true si la position est sur une case dangeureuse (bomb/flame)
     private bool isDangerousPosition(Vector2 position)
     {
-        int value = this.map[this.MapGenerator.mapSize - (int)position.y - 1, (int)position.x];
+        int value = this.map[(int)position.x, this.MapGenerator.mapSize - (int)position.y - 1];
         return value == 8 || value == 9;
     }
 
