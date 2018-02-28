@@ -202,13 +202,14 @@ public class IAIntelligence : MonoBehaviour {
         return value == 8 || value == 9;
     }
 
-    public bool getObjective(Vector2 iaPosition, ref Vector2 iaObjective)
+    public bool getObjective(Vector2 iaPosition, ref Vector2 iaObjective, Vector2 iaPreviousPosition)
     {
         if (mapInitialized)
         {
             if (!isDangerousPosition(iaPosition))
             {
-                getOffensiveGoal(iaPosition, ref iaObjective);
+                //getOffensiveGoal(iaPosition, ref iaObjective);
+                getOffensiveGoalImproved(iaPosition, ref iaObjective, iaPreviousPosition);
                 return true;
             }
             else
@@ -220,23 +221,81 @@ public class IAIntelligence : MonoBehaviour {
         return true;
     }
 
+    [Obsolete]
     private void getOffensiveGoal(Vector2 iaPosition, ref Vector2 iaObjective)
     {
+        //On choisi une des 4 directions au hasard:
         int idx = UnityEngine.Random.Range(0, 3);
         List<Vector2> dir = new List<Vector2>(){ Vector2.up, Vector2.down, Vector2.left, Vector2.right };
 
+        //On parcours la liste des directions:
         while (dir.Count > 0)
         {
             Vector2 newPos = iaPosition + dir[idx];
+
+            //Dès qu'une position est acceptable, on la choisi:
             if (!isDangerousPosition(newPos) && !isBlockedPosition(newPos))
             {
                 iaObjective = newPos;
                 break;
             }
+
+            //Si la position n'est pas acceptable, on la retire la liste:
             dir.RemoveAt(idx);
+
+            //On choisi une direction au hasard parmis les directions restantes:
             idx = UnityEngine.Random.Range(0, dir.Count - 1);
-            //TODO: Favorite new position
         }
+    }
+
+    private void getOffensiveGoalImproved(Vector2 iaPosition, ref Vector2 iaObjective, Vector2 iaPreviousPosition)
+    {
+        int idx = UnityEngine.Random.Range(0, 3);
+        List<Vector2> allDir = new List<Vector2>() { Vector2.up, Vector2.down, Vector2.left, Vector2.right };
+        List<Vector2> allowedDir = new List<Vector2>();
+
+        Boolean hasPreviousPositionInAllowedDirection = false;
+
+        //On parcours les positions autour du joueur:
+        for (int i = 0 ; i < allDir.Count ; i++)
+        {
+            Vector2 newPos = iaPosition + allDir[i];
+
+            //Si la position n'est pas dangereuse et que la case est accessible, on l'ajoute dans la liste des cases possibles:
+            if (!isDangerousPosition(newPos) && !isBlockedPosition(newPos))
+            {
+                allowedDir.Add(newPos);
+
+                if (newPos == iaPreviousPosition)
+                {
+                    hasPreviousPositionInAllowedDirection = true;
+                }
+            }
+        }
+
+        Debug.Log("I am located in: " + iaPosition);
+        Debug.Log("My previous position was: " + iaPreviousPosition);
+        Debug.Log("I have "+allowedDir.Count+" directions possible.");
+
+        //Si il n'y a qu'une seule possibilité de mouvement acceptable, on la prend:
+        if (allowedDir.Count == 1)
+        {
+            iaObjective = allowedDir[0];
+        }
+        //Si il y a plusieurs possibilités de mouvement:
+        else
+        {
+            //Si il y a la case précédente dans la liste, on la supprime:
+            if (hasPreviousPositionInAllowedDirection)
+            {
+                allowedDir.Remove(iaPreviousPosition);
+                Debug.Log("Previous Position Removed. "+allowedDir.Count+" directions remaining.");
+            }
+
+            //On prends ensuite au hasard parmis les cases restantes:
+            int random = UnityEngine.Random.Range(0, allowedDir.Count);
+            iaObjective = allowedDir[random];
+        } 
     }
 
     private void getDefensiveGoal(Vector2 iaPosition, ref Vector2 iaObjective)

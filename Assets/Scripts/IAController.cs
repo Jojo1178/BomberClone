@@ -25,12 +25,14 @@ public class IAController : MonoBehaviour
     public AudioClip[] sound_player_death;
 
     private Vector2 objective;
+    private Vector2 previousPosition;
     private bool offensiveMode = true;
 
     private void Awake()
     {
         objective = this.transform.position;
-        offensiveMode = IAIntelligence.INSTANCE.getObjective(this.transform.position, ref this.objective);
+        previousPosition = objective;
+        offensiveMode = IAIntelligence.INSTANCE.getObjective(this.transform.position, ref this.objective, this.previousPosition);
     }
 
     private void FixedUpdate()
@@ -38,15 +40,23 @@ public class IAController : MonoBehaviour
         if (isOjectiveReached())
         {
             this.transform.position = this.objective;
+            
             //Drop bomb
             int drop = UnityEngine.Random.Range(1, 4);
             if (this.CanDropBombs && offensiveMode && drop == 2)
             {
                 DropBomb();
             }
+            
             //Appeller l'IA:
-            offensiveMode = IAIntelligence.INSTANCE.getObjective(this.transform.position, ref this.objective);
+            offensiveMode = IAIntelligence.INSTANCE.getObjective(this.transform.position, ref this.objective, this.previousPosition);
+
+            //On enregistre la previousPosition avant de deplacer l'IA:
+            this.previousPosition = this.transform.position;
         }
+        
+
+        //On déplace l'IA vers l'objectif avec la vitesse voulue:
         Vector2 dir = this.objective - (Vector2)this.transform.position;
         Vector2 movement = dir * MaxSpeed;
 
