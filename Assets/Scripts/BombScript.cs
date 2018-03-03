@@ -41,7 +41,7 @@ public class BombScript : MonoBehaviour {
         GameObject flame = Instantiate(this.FlamePrefab);
         flame.transform.localPosition = this.transform.localPosition;
         FlameScript fs = flame.GetComponent<FlameScript>();
-        fs.Init(0,Vector3.zero);
+        fs.Init(0,Vector3.zero, false);
 
         CreateFlame(this.transform.localPosition , Vector3.left);
         CreateFlame(this.transform.localPosition , Vector3.right);
@@ -57,7 +57,7 @@ public class BombScript : MonoBehaviour {
     private void CreateFlame(Vector3 position,Vector3 direction) {
         RaycastHit2D hit = Physics2D.Raycast(position + direction, Vector2.zero);
 
-        bool breakable = false, stop = false;
+        bool breakable = true, stop = false;
         if (hit.collider != null) {
             WallScript ws;
             if (ws = hit.collider.gameObject.GetComponent<WallScript>()) {
@@ -66,12 +66,12 @@ public class BombScript : MonoBehaviour {
                 ws.DestroyWall();
             }
         }
-        if (!stop || breakable) {
+        if (breakable)
+        {
             GameObject flame = Instantiate(this.FlamePrefab);
             flame.transform.localPosition = this.transform.localPosition;
             FlameScript fs = flame.GetComponent<FlameScript>();
-            if (!stop)
-                fs.Init(this.Force - 1, direction);
+            fs.Init(this.Force - 1, direction, stop);
         }
     }
 
