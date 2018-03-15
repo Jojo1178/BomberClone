@@ -20,6 +20,12 @@ public class BombScript : MonoBehaviour {
     {
         //Send the bomb location to the IAIntelligence:
         IAIntelligence.INSTANCE.addBombToMap(Mathf.Round(this.transform.localPosition.x), Mathf.Round(this.transform.localPosition.y));
+
+        //Add dangerous place to IAIntelligence:
+        IAIntelligence.INSTANCE.addDangerousPlaceToMap(Mathf.Round(this.transform.localPosition.x), Mathf.Round(this.transform.localPosition.y), Vector3.left, this.Force - 1);
+        IAIntelligence.INSTANCE.addDangerousPlaceToMap(Mathf.Round(this.transform.localPosition.x), Mathf.Round(this.transform.localPosition.y), Vector3.right, this.Force - 1);
+        IAIntelligence.INSTANCE.addDangerousPlaceToMap(Mathf.Round(this.transform.localPosition.x), Mathf.Round(this.transform.localPosition.y), Vector3.up, this.Force - 1);
+        IAIntelligence.INSTANCE.addDangerousPlaceToMap(Mathf.Round(this.transform.localPosition.x), Mathf.Round(this.transform.localPosition.y), Vector3.down, this.Force - 1);
     }
 
     private void OnEnable() {

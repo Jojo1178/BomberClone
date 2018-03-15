@@ -106,6 +106,18 @@ public class IAIntelligence : MonoBehaviour {
         }        
     }
 
+    public void addDangerousPlaceToMap(float x, float y, Vector2 dir, int force = 0)
+    {
+        Vector2 newdir = new Vector2(x, y) + dir;
+        if (force > 0 && this.map[(int)newdir.x, this.map.GetLength(1) - (int)newdir.y - 1] == 1)
+        {
+            this.writeMapInLogFile(this.map, "BEFORE DANGEROUS PLACE TO BE ADDED");
+            this.map[(int)newdir.x, this.map.GetLength(1) - (int)newdir.y - 1] = 9;
+            this.writeMapInLogFile(this.map, "DANGEROUS PLACE ADDED");
+            addDangerousPlaceToMap(newdir.x, newdir.y, dir, force - 1);
+        }
+    }
+
     public void addBombToMap(float x, float y)
     {
         this.writeMapInLogFile(this.map, "BEFORE BOMB TO BE PLANTED");
@@ -281,6 +293,11 @@ public class IAIntelligence : MonoBehaviour {
         if (allowedDir.Count == 1)
         {
             iaObjective = allowedDir[0];
+        }
+        //Si aucune possibilité n'est possible
+        else if (allowedDir.Count == 0)
+        {
+            return;
         }
         //Si il y a plusieurs possibilités de mouvement:
         else
