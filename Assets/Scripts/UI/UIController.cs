@@ -9,6 +9,7 @@ public class UIController : MonoBehaviour {
     public GameObject PanelPauseMenu;
     public GameObject PanelChooseLevelMenu;
     public GameObject PanelIngameMenu;
+    public GameObject PanelEndGameMenu;
 
     // Use this for initialization
     void Start ()
@@ -47,7 +48,7 @@ public class UIController : MonoBehaviour {
 
     public void clickButtonExit()
     {
-        
+        Debug.Log("BUTTON EXIT CLICKED");
     }
 
     // CHOOSE LEVEL MENU:
@@ -71,5 +72,11 @@ public class UIController : MonoBehaviour {
     public void clickButtonResume()
     {
         SetActivePage(PanelIngameMenu);
+    }
+
+    //END GAME MENU:
+    public void eventEndGame()
+    {
+        SetActivePage(PanelEndGameMenu);
     }
 }

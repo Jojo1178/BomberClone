@@ -83,6 +83,15 @@ public class PlayerController : MonoBehaviour {
 
         Debug.Log(this.gameObject.name + " has been DELETED");
         Destroy(this.gameObject);
+
+        //End Game UI:
+        GameObject canvas = GameObject.Find("Canvas");
+        UIController uiController = canvas.GetComponent<UIController>();
+        uiController.eventEndGame();
+
+        //Update the UIEndGameMenu with a DEFEAT !
+        UIEndGameMenuResult uiEndGameMenuResult = canvas.GetComponentInChildren<UIEndGameMenuResult>();
+        uiEndGameMenuResult.setVictory(false);
     }
 
     public Rigidbody2D getRigidBody()
