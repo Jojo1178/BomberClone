@@ -4427,7 +4427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f3e1e9ec5dd80499023f74185db30e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerA: {fileID: 1996701860766318, guid: 03d7c0489bcc5eb4f9462a4eefc64235, type: 2}
+  playerA: {fileID: 1195916429979880, guid: 03d7c0489bcc5eb4f9462a4eefc64235, type: 2}
   playerB: {fileID: 1664248127224228, guid: a7371b1c37c61934289d07b89b0e4bd9, type: 2}
   playerC: {fileID: 1664248127224228, guid: a7371b1c37c61934289d07b89b0e4bd9, type: 2}
   playerD: {fileID: 1664248127224228, guid: a7371b1c37c61934289d07b89b0e4bd9, type: 2}
@@ -4904,6 +4904,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1684765018}
   - component: {fileID: 1684765017}
+  - component: {fileID: 1684765019}
   m_Layer: 0
   m_Name: AppController
   m_TagString: Untagged
@@ -4924,6 +4925,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 1649976144}
   MapGenerator: {fileID: 1504257090}
+  VictoryManager: {fileID: 1684765019}
 --- !u!4 &1684765018
 Transform:
   m_ObjectHideFlags: 0
@@ -4937,6 +4939,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1684765019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1684765016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3bf2df256dece3408d78763c0011d6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 91468419}
 --- !u!1 &1697288614
 GameObject:
   m_ObjectHideFlags: 0

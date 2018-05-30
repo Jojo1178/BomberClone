@@ -19,9 +19,11 @@ public class MapGenerator : MonoBehaviour
     private GameObject indestructibleWall;
     
     public int mapSize = 10;
-    private int IANumber = 0; //TODO: Mettre le paramètre dans une GUI
+    private int IANumber = 0;
 
     private int[,] loadedMap;
+
+    private VictoryManager victoryManager;
 
     // Use this for initialization
     void Start ()
@@ -231,6 +233,7 @@ public class MapGenerator : MonoBehaviour
     public void setIANumber(int IANumber)
     {
         this.IANumber = IANumber;
+        victoryManager.setAliveIANumber(IANumber);
     }
 
     public GameObject getPlayerA()
@@ -251,5 +254,10 @@ public class MapGenerator : MonoBehaviour
     public GameObject getPlayerD()
     {
         return playerD;
+    }
+
+    public void setVictoryManager(VictoryManager victoryManager)
+    {
+        this.victoryManager = victoryManager;
     }
 }

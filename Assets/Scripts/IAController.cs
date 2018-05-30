@@ -102,6 +102,11 @@ public class IAController : MonoBehaviour
 
         Debug.Log(this.gameObject.name + " has been DELETED");
         Destroy(this.gameObject);
+
+        //Inform the Application Controller that the ia died:
+        GameObject appController = GameObject.Find("AppController");
+        VictoryManager victoryManager = appController.GetComponent<VictoryManager>();
+        victoryManager.iaDied();
     }
 
     private IEnumerator timeBetweenTwoBombs()

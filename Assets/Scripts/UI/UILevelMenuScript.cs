@@ -205,6 +205,8 @@ public class UILevelMenuScript : MonoBehaviour {
         try
         {
             iaNumber = int.Parse(stringFromUI);
+            if (iaNumber > 4)
+                iaNumber = 4;
         }
         catch (Exception ex)
         {
