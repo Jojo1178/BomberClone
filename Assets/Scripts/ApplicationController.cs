@@ -13,6 +13,7 @@ public class ApplicationController : MonoBehaviour {
     {
         Debug.Log("Application Started");
         MapGenerator.setVictoryManager(VictoryManager);
+        VictoryManager.setMapGenerator(MapGenerator);
 	}
 	
 	// Update is called once per frame

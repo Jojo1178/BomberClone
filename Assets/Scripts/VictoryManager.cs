@@ -9,6 +9,8 @@ public class VictoryManager : MonoBehaviour {
     private bool playerIsAlive = true;
     private int aliveIANumber = 0;
 
+    private MapGenerator mapGenerator;
+
     // Use this for initialization
     void Start () {
 		
@@ -52,10 +54,17 @@ public class VictoryManager : MonoBehaviour {
 
         UIEndGameMenuResult uiEndGameMenuResult = canvas.GetComponentInChildren<UIEndGameMenuResult>();
         uiEndGameMenuResult.setVictory(victory);
+
+        mapGenerator.cleanScene();
     }
 
     public void setAliveIANumber(int aliveIANumber)
     {
         this.aliveIANumber = aliveIANumber;
+    }
+
+    public void setMapGenerator(MapGenerator mapGenerator)
+    {
+        this.mapGenerator = mapGenerator;
     }
 }

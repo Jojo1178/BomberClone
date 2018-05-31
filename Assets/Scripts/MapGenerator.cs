@@ -22,6 +22,7 @@ public class MapGenerator : MonoBehaviour
     private int IANumber = 0;
 
     private int[,] loadedMap;
+    private List<GameObject> tilesObjects = new List<GameObject>();
 
     private VictoryManager victoryManager;
 
@@ -136,42 +137,73 @@ public class MapGenerator : MonoBehaviour
                 switch (tileType)
                 {
                     case 1:
-                        Instantiate(floor, new Vector3(x, y, 0), Quaternion.identity);
+                        tilesObjects.Add(Instantiate(floor, new Vector3(x, y, 0), Quaternion.identity));
                         break;
                     case 2:
                         //For destructible positions, we instanciate a Floor tile + Destrucible prefab:
-                        Instantiate(floor, new Vector3(x, y, 0), Quaternion.identity);
-                        Instantiate(destructibleWall, new Vector3(x, y, 0), Quaternion.identity);
+                        tilesObjects.Add(Instantiate(floor, new Vector3(x, y, 0), Quaternion.identity));
+                        tilesObjects.Add(Instantiate(destructibleWall, new Vector3(x, y, 0), Quaternion.identity));
                         break;
                     case 3:
-                        Instantiate(indestructibleWall, new Vector3(x, y, 0), Quaternion.identity);
+                        tilesObjects.Add(Instantiate(indestructibleWall, new Vector3(x, y, 0), Quaternion.identity));
                         break;
                     case 4:
                         //For players positions, we instanciate a Floor tile + Player prefab
-                        Instantiate(floor, new Vector3(x, y, 0), Quaternion.identity);
+                        tilesObjects.Add(Instantiate(floor, new Vector3(x, y, 0), Quaternion.identity));
                         playerA = Instantiate(playerA, new Vector3(x, y, 0), Quaternion.identity);
                         break;
                     case 5:
                         //For players positions, we instanciate a Floor tile + Player prefab
-                        Instantiate(floor, new Vector3(x, y, 0), Quaternion.identity);
+                        tilesObjects.Add(Instantiate(floor, new Vector3(x, y, 0), Quaternion.identity));
                         if (IANumber >= 1)
                             playerB = Instantiate(playerB, new Vector3(x, y, 0), Quaternion.identity);    
                         break;
                     case 6:
                         //For players positions, we instanciate a Floor tile + Player prefab
-                        Instantiate(floor, new Vector3(x, y, 0), Quaternion.identity);
+                        tilesObjects.Add(Instantiate(floor, new Vector3(x, y, 0), Quaternion.identity));
                         if (IANumber >= 2)
                             playerC = Instantiate(playerC, new Vector3(x, y, 0), Quaternion.identity);
                         break;
                     case 7:
                         //For players positions, we instanciate a Floor tile + Player prefab
-                        Instantiate(floor, new Vector3(x, y, 0), Quaternion.identity);
+                        tilesObjects.Add(Instantiate(floor, new Vector3(x, y, 0), Quaternion.identity));
                         if (IANumber >= 3)
                             playerD = Instantiate(playerD, new Vector3(x, y, 0), Quaternion.identity);
                         break;
                 }
             }
         }
+    }
+
+    public void cleanScene()
+    {
+        Debug.Log("CLEANING SCENE...");
+        destroyMap();
+        destroyPlayers();
+        Debug.Log("...SCENE CLEANED");
+    }
+
+    //Remove all instanciated tiles from scene:
+    private void destroyMap()
+    {
+        for (int i = tilesObjects.Count - 1; i >= 0; i--)
+        {
+            GameObject tileToRemove = tilesObjects[i];
+            Destroy(tileToRemove);
+        }
+
+        Debug.Log("MAP DESTROYED");
+    }
+
+    //Remove all instanciated players from scene:
+    private void destroyPlayers()
+    {
+        Destroy(playerA);
+        Destroy(playerB);
+        Destroy(playerC);
+        Destroy(playerD);
+
+        Debug.Log("PLAYERS DESTROYED");
     }
 
     [Obsolete]
