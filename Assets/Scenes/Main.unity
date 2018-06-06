@@ -4625,10 +4625,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f3e1e9ec5dd80499023f74185db30e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerA: {fileID: 1195916429979880, guid: 03d7c0489bcc5eb4f9462a4eefc64235, type: 2}
-  playerB: {fileID: 1664248127224228, guid: a7371b1c37c61934289d07b89b0e4bd9, type: 2}
-  playerC: {fileID: 1664248127224228, guid: a7371b1c37c61934289d07b89b0e4bd9, type: 2}
-  playerD: {fileID: 1664248127224228, guid: a7371b1c37c61934289d07b89b0e4bd9, type: 2}
+  refPlayerA: {fileID: 1195916429979880, guid: 03d7c0489bcc5eb4f9462a4eefc64235, type: 2}
+  refPlayerB: {fileID: 1664248127224228, guid: a7371b1c37c61934289d07b89b0e4bd9, type: 2}
+  refPlayerC: {fileID: 1664248127224228, guid: a7371b1c37c61934289d07b89b0e4bd9, type: 2}
+  refPlayerD: {fileID: 1664248127224228, guid: a7371b1c37c61934289d07b89b0e4bd9, type: 2}
   mapSize: 10
 --- !u!4 &1504257091
 Transform:
