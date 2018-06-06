@@ -8,10 +8,17 @@ using UnityEngine;
 public class MapGenerator : MonoBehaviour
 {
     //Players prefabs:
-    public GameObject playerA;
-    public GameObject playerB;
-    public GameObject playerC;
-    public GameObject playerD;
+    public GameObject refPlayerA;
+    private GameObject instPlayerA;
+
+    public GameObject refPlayerB;
+    private GameObject instPlayerB;
+
+    public GameObject refPlayerC;
+    private GameObject instPlayerC;
+
+    public GameObject refPlayerD;
+    private GameObject instPlayerD;
 
     //Prefabs used to create the map:
     private GameObject floor;
@@ -58,6 +65,8 @@ public class MapGenerator : MonoBehaviour
         //Instancie les textures à utiliser:
         instanciateTextures(texturePack);
 
+        instanciatePlayers();
+
         //Crée la carte:
         createMap(mapFilePath);
     }
@@ -74,7 +83,15 @@ public class MapGenerator : MonoBehaviour
         destructibleWall = texture.getDestructibleWallPrefab();
         indestructibleWall = texture.getIndestructibleWallPrefab();
     }
-    
+
+    private void instanciatePlayers()
+    {
+        instPlayerA = refPlayerA;
+        instPlayerB = refPlayerB;
+        instPlayerC = refPlayerC;
+        instPlayerD = refPlayerD;
+    }
+
     private void createMap(string mapFilePath)
     {
         //We load the choosen map from its text file and instanciate it:
@@ -150,25 +167,25 @@ public class MapGenerator : MonoBehaviour
                     case 4:
                         //For players positions, we instanciate a Floor tile + Player prefab
                         tilesObjects.Add(Instantiate(floor, new Vector3(x, y, 0), Quaternion.identity));
-                        playerA = Instantiate(playerA, new Vector3(x, y, 0), Quaternion.identity);
+                        instPlayerA = Instantiate(refPlayerA, new Vector3(x, y, 0), Quaternion.identity);
                         break;
                     case 5:
                         //For players positions, we instanciate a Floor tile + Player prefab
                         tilesObjects.Add(Instantiate(floor, new Vector3(x, y, 0), Quaternion.identity));
                         if (IANumber >= 1)
-                            playerB = Instantiate(playerB, new Vector3(x, y, 0), Quaternion.identity);    
+                            instPlayerB = Instantiate(refPlayerB, new Vector3(x, y, 0), Quaternion.identity);    
                         break;
                     case 6:
                         //For players positions, we instanciate a Floor tile + Player prefab
                         tilesObjects.Add(Instantiate(floor, new Vector3(x, y, 0), Quaternion.identity));
                         if (IANumber >= 2)
-                            playerC = Instantiate(playerC, new Vector3(x, y, 0), Quaternion.identity);
+                            instPlayerC = Instantiate(refPlayerC, new Vector3(x, y, 0), Quaternion.identity);
                         break;
                     case 7:
                         //For players positions, we instanciate a Floor tile + Player prefab
                         tilesObjects.Add(Instantiate(floor, new Vector3(x, y, 0), Quaternion.identity));
                         if (IANumber >= 3)
-                            playerD = Instantiate(playerD, new Vector3(x, y, 0), Quaternion.identity);
+                            instPlayerD = Instantiate(refPlayerD, new Vector3(x, y, 0), Quaternion.identity);
                         break;
                 }
             }
@@ -198,10 +215,10 @@ public class MapGenerator : MonoBehaviour
     //Remove all instanciated players from scene:
     private void destroyPlayers()
     {
-        Destroy(playerA);
-        Destroy(playerB);
-        Destroy(playerC);
-        Destroy(playerD);
+        Destroy(instPlayerA);
+        Destroy(instPlayerB);
+        Destroy(instPlayerC);
+        Destroy(instPlayerD);
 
         Debug.Log("PLAYERS DESTROYED");
     }
@@ -270,22 +287,22 @@ public class MapGenerator : MonoBehaviour
 
     public GameObject getPlayerA()
     {
-        return playerA;
+        return instPlayerA;
     }
 
     public GameObject getPlayerB()
     {
-        return playerB;
+        return instPlayerB;
     }
 
     public GameObject getPlayerC()
     {
-        return playerC;
+        return instPlayerC;
     }
 
     public GameObject getPlayerD()
     {
-        return playerD;
+        return instPlayerD;
     }
 
     public void setVictoryManager(VictoryManager victoryManager)

@@ -21,15 +21,23 @@ public class VictoryManager : MonoBehaviour {
 		
 	}
 
+    private void stat()
+    {
+        Debug.LogError("PLAYER ALIVE: " + playerIsAlive);
+        Debug.LogError("IA ALIVE: " + aliveIANumber);
+    }
+
     private void checkVictory()
     {
-        if (aliveIANumber <= 0)
-        {
-            endGame(true);
-        }
-        else if (!playerIsAlive)
+        stat();
+
+        if(!playerIsAlive)
         {
             endGame(false);
+        }
+        else if (aliveIANumber <= 0)
+        {
+            endGame(true);
         }
     }
 
@@ -56,6 +64,9 @@ public class VictoryManager : MonoBehaviour {
         uiEndGameMenuResult.setVictory(victory);
 
         mapGenerator.cleanScene();
+
+        playerIsAlive = true;
+        aliveIANumber = 0;
     }
 
     public void setAliveIANumber(int aliveIANumber)

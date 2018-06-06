@@ -75,6 +75,12 @@ public class UIController : MonoBehaviour {
     }
 
     //END GAME MENU:
+    public void clickButtonPlayAgain()
+    {
+        SetActivePage(PanelMainMenu);
+    }
+    
+    //EVENTS
     public void eventEndGame()
     {
         SetActivePage(PanelEndGameMenu);
