@@ -318,7 +318,7 @@ public class IAIntelligence : MonoBehaviour {
     private void getDefensiveGoal(Vector2 iaPosition, ref Vector2 iaObjective)
     {
         List<Vector2> path = getClosestSafePositionPath(iaPosition);
-        if(path.Count > 1)
+        if(path != null && path.Count > 1)
         {
             iaObjective = path[1];
         }
@@ -338,7 +338,10 @@ public class IAIntelligence : MonoBehaviour {
         while(todo.Count > 0)
         {
             Vector2 current = todo.Dequeue();
-            if (!isDangerousPosition(current)) return paths[current];
+            //if (!isDangerousPosition(current))
+            //{
+            //    return paths[current];
+            //}
 
             foreach (Vector2 dir in nextPos)
             {
@@ -348,10 +351,19 @@ public class IAIntelligence : MonoBehaviour {
                 {
                     if (!isBlockedPosition(newdir))
                     {
-                        List<Vector2> path = paths[current];
+                        List<Vector2> path = new List<Vector2>();
+                        path.AddRange(paths[current]);
                         path.Add(newdir);
                         paths.Add(newdir, path);
-                        todo.Enqueue(newdir);
+
+                        if (!isDangerousPosition(newdir))
+                        {
+                            return paths[newdir];
+                        }
+                        else
+                        {
+                            todo.Enqueue(newdir);
+                        }
                     }
                     else
                     {

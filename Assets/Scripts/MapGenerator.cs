@@ -65,8 +65,6 @@ public class MapGenerator : MonoBehaviour
         //Instancie les textures à utiliser:
         instanciateTextures(texturePack);
 
-        instanciatePlayers();
-
         //Crée la carte:
         createMap(mapFilePath);
     }
@@ -82,14 +80,6 @@ public class MapGenerator : MonoBehaviour
         floor = texture.getFloorPrefab();
         destructibleWall = texture.getDestructibleWallPrefab();
         indestructibleWall = texture.getIndestructibleWallPrefab();
-    }
-
-    private void instanciatePlayers()
-    {
-        instPlayerA = refPlayerA;
-        instPlayerB = refPlayerB;
-        instPlayerC = refPlayerC;
-        instPlayerD = refPlayerD;
     }
 
     private void createMap(string mapFilePath)
@@ -215,10 +205,14 @@ public class MapGenerator : MonoBehaviour
     //Remove all instanciated players from scene:
     private void destroyPlayers()
     {
-        Destroy(instPlayerA);
-        Destroy(instPlayerB);
-        Destroy(instPlayerC);
-        Destroy(instPlayerD);
+        if(instPlayerA != null)
+            Destroy(instPlayerA);
+        if (instPlayerB != null)
+            Destroy(instPlayerB);
+        if (instPlayerC != null)
+            Destroy(instPlayerC);
+        if (instPlayerD != null)
+            Destroy(instPlayerD);
 
         Debug.Log("PLAYERS DESTROYED");
     }
