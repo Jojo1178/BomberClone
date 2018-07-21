@@ -28,6 +28,8 @@ public class PlayerController : MonoBehaviour {
     public AudioClip[] sound_bomb_drop;
     public AudioClip[] sound_player_death;
 
+    private bool isAlive = true;
+
     private void LateUpdate() {
         if (Input.GetKeyUp(this.BombKey)) {
             this.CanDropBombs = true;
@@ -76,18 +78,24 @@ public class PlayerController : MonoBehaviour {
     /// When an explosion touch the player
     /// </summary>
     public void TouchByExplosion() {
-        //TODO : Play Death Animation
 
-        //Play player death sound:
-        SoundManager.instance.RandomizeSfx(sound_player_death);
+        if (isAlive)
+        {
+            this.isAlive = false;
 
-        Debug.Log(this.gameObject.name + " has been DELETED");
-        Destroy(this.gameObject);
-        
-        //Inform the Application Controller that the player died:
-        GameObject appController = GameObject.Find("AppController");
-        VictoryManager victoryManager = appController.GetComponent<VictoryManager>();
-        victoryManager.playerDied();
+            //TODO : Play Death Animation
+
+            //Play player death sound:
+            SoundManager.instance.RandomizeSfx(sound_player_death);
+
+            Debug.Log(this.gameObject.name + " has been DELETED");
+            Destroy(this.gameObject);
+
+            //Inform the Application Controller that the player died:
+            GameObject appController = GameObject.Find("AppController");
+            VictoryManager victoryManager = appController.GetComponent<VictoryManager>();
+            victoryManager.playerDied();
+        }
     }
 
     public Rigidbody2D getRigidBody()

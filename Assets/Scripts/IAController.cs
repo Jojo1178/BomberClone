@@ -28,6 +28,8 @@ public class IAController : MonoBehaviour
     private Vector2 previousPosition;
     private bool offensiveMode = true;
 
+    private bool isAlive = true;
+
     private void Awake()
     {
         objective = this.transform.position;
@@ -95,18 +97,23 @@ public class IAController : MonoBehaviour
     /// </summary>
     public void TouchByExplosion()
     {
-        //TODO : Play Death Animation
+        if (isAlive)
+        {
+            this.isAlive = false;
 
-        //Play player death sound:
-        SoundManager.instance.RandomizeSfx(sound_player_death);
+            //TODO : Play Death Animation
 
-        Debug.Log(this.gameObject.name + " has been DELETED");
-        Destroy(this.gameObject);
+            //Play player death sound:
+            SoundManager.instance.RandomizeSfx(sound_player_death);
 
-        //Inform the Application Controller that the ia died:
-        GameObject appController = GameObject.Find("AppController");
-        VictoryManager victoryManager = appController.GetComponent<VictoryManager>();
-        victoryManager.iaDied();
+            Debug.Log(this.gameObject.name + " has been DELETED");
+            Destroy(this.gameObject);
+
+            //Inform the Application Controller that the ia died:
+            GameObject appController = GameObject.Find("AppController");
+            VictoryManager victoryManager = appController.GetComponent<VictoryManager>();
+            victoryManager.iaDied();
+        }
     }
 
     private IEnumerator timeBetweenTwoBombs()

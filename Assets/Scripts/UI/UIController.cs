@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class UIController : MonoBehaviour {
 
-    private GameObject ActivePanel;
-    public GameObject PanelMainMenu;
-    public GameObject PanelPauseMenu;
-    public GameObject PanelChooseLevelMenu;
-    public GameObject PanelIngameMenu;
-    public GameObject PanelEndGameMenu;
+    private UIPanel ActivePanel;
+    public UIPanel PanelMainMenu;
+    public UIPanel PanelPauseMenu;
+    public UIPanel PanelChooseLevelMenu;
+    public UIPanel PanelIngameMenu;
+    public UIPanel PanelEndGameMenu;
 
     // Use this for initialization
     void Start ()
@@ -25,17 +25,20 @@ public class UIController : MonoBehaviour {
 		
 	}
 
-    private void SetActivePage(GameObject panelToActivate)
+    private void SetActivePage(UIPanel panelToActivate)
     {
         //Set the current panel to false:
-        ActivePanel.SetActive(false);
+        ActivePanel.gameObject.SetActive(false);
 
         //Set the panel to display at true:
         ActivePanel = panelToActivate;
         if (panelToActivate != null)
         {
-            panelToActivate.SetActive(true);
+            panelToActivate.gameObject.SetActive(true);
         }
+
+        //Do specific action:
+        panelToActivate.onActivationAction();
     }
 
     // NO TREATMENTS IN THIS CLASS, ONLY GUI SWAP
@@ -44,11 +47,6 @@ public class UIController : MonoBehaviour {
     public void clickButtonPlay()
     {
         SetActivePage(PanelChooseLevelMenu);
-    }
-
-    public void clickButtonExit()
-    {
-        Debug.Log("BUTTON EXIT CLICKED");
     }
 
     // CHOOSE LEVEL MENU:
@@ -79,7 +77,13 @@ public class UIController : MonoBehaviour {
     {
         SetActivePage(PanelMainMenu);
     }
-    
+
+    //MULTIPLE MENU:
+    public void clickButtonExit()
+    {
+        ActivePanel.onClickAction("EXIT");
+    }
+
     //EVENTS
     public void eventEndGame()
     {

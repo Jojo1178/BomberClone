@@ -3,24 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIPauseMenu : UIPanel
+public class UIMainMenu : UIPanel
 {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
-    public void clickButtonResume()
-    {
-        Time.timeScale = 1;
-    }
-
     public override void onActivationAction()
     {
         

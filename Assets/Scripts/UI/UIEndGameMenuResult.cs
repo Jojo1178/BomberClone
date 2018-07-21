@@ -1,22 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIEndGameMenuResult : MonoBehaviour {
+public class UIEndGameMenuResult : UIPanel
+{
 
     private bool victory = true;
     public Text resultUI;
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     public void setVictory(bool victory)
     {
@@ -30,5 +22,25 @@ public class UIEndGameMenuResult : MonoBehaviour {
         {
             resultUI.text = "DEFEAT !";
         }
+    }
+
+    
+
+    public override void onActivationAction()
+    {
+        
+    }
+
+    public override void onClickAction(string buttonName)
+    {
+        if (buttonName.Equals("EXIT"))
+        {
+            exitGame();
+        }
+    }
+
+    private void exitGame()
+    {
+        Application.Quit();
     }
 }
