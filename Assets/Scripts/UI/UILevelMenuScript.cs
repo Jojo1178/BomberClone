@@ -56,7 +56,7 @@ public class UILevelMenuScript : UIPanel
     private void loadMaps()
     {
         //On récupère les noms des cartes du dossier cartes:
-        DirectoryInfo dir = new DirectoryInfo("Assets/Maps/");
+        DirectoryInfo dir = new DirectoryInfo(Path.Combine(Application.streamingAssetsPath, "Maps"));
         FileInfo[] files = dir.GetFiles();
 
         foreach (FileInfo file in files)
@@ -91,19 +91,19 @@ public class UILevelMenuScript : UIPanel
         mapNameUI.text = mapNameWithoutExt;
 
         //On vérifie si cette carte a une preview:
-        if (File.Exists("Assets/Maps/" + mapNameWithoutExt + ".jpg"))
+        if (File.Exists(Path.Combine(Path.Combine(Application.streamingAssetsPath, "Maps"), mapNameWithoutExt + ".jpg")))
         {
             //Si cette carte a une preview, on l'affiche dans l'UI (JPG):
             Sprite NewSprite = new Sprite();
-            Texture2D SpriteTexture = LoadTexture("Assets/Maps/" + mapNameWithoutExt + ".jpg");
+            Texture2D SpriteTexture = LoadTexture(Path.Combine(Path.Combine(Application.streamingAssetsPath, "Maps"), mapNameWithoutExt + ".jpg"));
             NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0), 100.0f);
             mapPreviewUI.sprite = NewSprite;
         }
-        else if (File.Exists("Assets/Maps/" + mapNameWithoutExt + ".png"))
+        else if (File.Exists(Path.Combine(Path.Combine(Application.streamingAssetsPath, "Maps"), mapNameWithoutExt + ".png")))
         {
             //Si cette carte a une preview, on l'affiche dans l'UI (PNG):
             Sprite NewSprite = new Sprite();
-            Texture2D SpriteTexture = LoadTexture("Assets/Maps/" + mapNameWithoutExt + ".png");
+            Texture2D SpriteTexture = LoadTexture(Path.Combine(Path.Combine(Application.streamingAssetsPath, "Maps"), mapNameWithoutExt + ".png"));
             NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0), 100.0f);
             mapPreviewUI.sprite = NewSprite;
         }
@@ -111,7 +111,7 @@ public class UILevelMenuScript : UIPanel
         {
             //Si cette carte n'a pas de preview, on l'affiche la 404.jpg:
             Sprite NewSprite = new Sprite();
-            Texture2D SpriteTexture = LoadTexture("Assets/Maps/404.jpg");
+            Texture2D SpriteTexture = LoadTexture(Path.Combine(Path.Combine(Application.streamingAssetsPath, "Maps"), "404.jpg"));
             NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0), 100.0f);
             mapPreviewUI.sprite = NewSprite;
         }
@@ -185,9 +185,9 @@ public class UILevelMenuScript : UIPanel
         {
             mapNumber = UnityEngine.Random.Range(0, mapNameDictionary.Count);
         }
-        
+
         //We add the path to the Maps directory to the map name:
-        string choosenMapFilePath = "Assets/Maps/" + mapNameDictionary[mapNumber];
+        string choosenMapFilePath = Path.Combine(Path.Combine(Application.streamingAssetsPath, "Maps"), mapNameDictionary[mapNumber]);
 
         return choosenMapFilePath;
     }

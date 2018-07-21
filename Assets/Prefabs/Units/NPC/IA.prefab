@@ -133,6 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61c9fdacd266b25468fc300a18310e9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timerBetweenTwoBombs: 5
   MaxSpeed: 10
   CanDropBombs: 1
   CanMove: 1
@@ -147,7 +148,6 @@ MonoBehaviour:
   sound_player_death:
   - {fileID: 8300000, guid: a31f4c5039dda7c4cb9ce0b5afa38c66, type: 3}
   - {fileID: 8300000, guid: 3854e48460dac3e4681f045ec4aba32a, type: 3}
-  IAIntelligence: {fileID: 0}
 --- !u!212 &212401084894083896
 SpriteRenderer:
   m_ObjectHideFlags: 1
