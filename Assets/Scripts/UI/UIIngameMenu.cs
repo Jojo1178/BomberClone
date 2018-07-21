@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIIngameMenu : MonoBehaviour {
+public class UIIngameMenu : UIPanel
+{
 
 	// Use this for initialization
 	void Start () {
@@ -16,5 +18,15 @@ public class UIIngameMenu : MonoBehaviour {
     public void clickButtonPause()
     {
         Time.timeScale = 0;
+    }
+
+    public override void onActivationAction()
+    {
+        
+    }
+
+    public override void onClickAction(string buttonName)
+    {
+        
     }
 }

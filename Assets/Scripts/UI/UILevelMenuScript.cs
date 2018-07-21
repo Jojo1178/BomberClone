@@ -6,7 +6,8 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UILevelMenuScript : MonoBehaviour {
+public class UILevelMenuScript : UIPanel
+{
 
     public GameObject mapManager;
     
@@ -316,5 +317,15 @@ public class UILevelMenuScript : MonoBehaviour {
         }
 
         return previewOfTheObject;
+    }
+
+    public override void onActivationAction()
+    {
+        
+    }
+
+    public override void onClickAction(string buttonName)
+    {
+        
     }
 }
